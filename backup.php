@@ -186,3 +186,44 @@ printf("Number of hex value is %x",$b);  //Number of binary value is d
 $b = 13; //%b means binary print 
 printf("Number of binary value is %b",$b);  //Number of binary value is 1101
 
+
+/**
+ * Printf variable swapping to set which function will run first
+ */
+
+$fname = "Sabbir";
+$lname = "Ahmed";
+
+printf("My name is %s %s" , $fname, $lname); //My name is Sabbir Ahmed
+echo"\n";
+
+printf("My name is %2$s %1$s" , $fname, $lname); //use %2$ and s to set which want to print first
+//output: error PHP Notice:  Undefined variable: s in
+
+// if i use "" then  Undefined variable error so use ' ' 
+printf('My name is %2$s %1$s' , $fname, $lname); //use %2$ and s to set which want to print first
+//output: My name is My name is Ahmed Sabbir
+
+
+
+/**
+ * Print upto that amount fraction point and also print value 0  first
+ */
+
+$a = 10;
+$b = 20;
+
+printf("a = %07d",$a);  //% then ki hbe 0 koto gor 7 ta total
+echo"\n";
+printf("b = %07d",$b); //% then ki hbe 0 koto gor 7 ta total
+//  output  a = 0000010
+//           b = 0000020
+
+echo "\n";
+printf("a = %07.2f",$a);  //% then ki hbe 0 koto gor 7 ta total with .2 gor fraction value
+echo"\n";
+printf("b = %07.2f",$b); //% then ki hbe 0 koto gor 7 ta total .2 gor fraction value
+
+//outpu a = 0010.00
+// b = 0020.00
+
