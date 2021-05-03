@@ -1,12 +1,7 @@
 <?php
 
-
-$n = 1;
-$m= --$n;
-
-//n=n-1 then m = n   so 0  0
-echo $m ,"\n" , $n;
-
+$b = 13; //%o means hex print 
+printf("Number of octal value is %o",$b);  //Number of octal value is 15
 
 
 

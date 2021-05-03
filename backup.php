@@ -155,3 +155,34 @@ $m= --$n;
 //n=n-1 then m = n   so 0  0
 echo $m ,"\n" , $n;
 
+/**
+ * Print OCTAL by using 0 before the value or %o 
+ */
+
+$n = 12;
+
+$o = 012; //0 means octal , now use %d to print // or use %o 
+printf("Number %d of octal is %d", $n,$o);  //Number 12 of octal is 10
+
+
+$b = 13; //%o means hex print 
+printf("Number of octal value is %o",$b);  //Number of octal value is 15
+
+/**
+ * Hexa Decimal so use 0x  and %d or // only use %x
+ */
+ 
+$n = 12;
+
+$h = 0x2B; //0x means hex , now use %d to print
+printf("Number %d of Hex value is %d", $n,$h);  //Number 12 of Hex value is 43
+
+$b = 13; //%x means hex print 
+printf("Number of hex value is %x",$b);  //Number of binary value is d
+
+/**
+ * Binary so just use %b
+ */
+$b = 13; //%b means binary print 
+printf("Number of binary value is %b",$b);  //Number of binary value is 1101
+
