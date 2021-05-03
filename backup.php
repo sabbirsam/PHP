@@ -227,3 +227,14 @@ printf("b = %07.2f",$b); //% then ki hbe 0 koto gor 7 ta total .2 gor fraction v
 //outpu a = 0010.00
 // b = 0020.00
 
+
+/**
+ * sprintf used to get it return. printf can not return but sprintf can be return
+ */
+$fname = "Sabbir";
+$lname = "Ahmed";
+
+$output = sprintf("My name is %s %s", $fname, $lname); //here value is return to output
+
+echo $output;  // here value is return to output and now we can echo the return
+
