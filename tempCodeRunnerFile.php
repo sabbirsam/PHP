@@ -1,2 +1,2 @@
 <?php
-false
+k

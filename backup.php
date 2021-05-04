@@ -324,5 +324,77 @@ switch( $k ){
        
     default:
         echo"not color";    
+}   
+
+
+
+/**
+ * Switch Case
+ */
+
+$n= -11;
+$k = abs($n) % 2;
+
+switch( $k ){
+    case 0:
+
+        switch(true){
+            case $n>0:
+                echo"This is a positive even number ";
+                break;
+            case $n<0:
+                echo"This is a negative even number ";
+                break;
+
+        }
+
+        break; 
+
+    default:
+    switch(true){
+        case $n>0:
+            echo"This is a positive even number ";
+            break;
+        case $n<0:
+            echo"This is a negative even number ";
+            break;
+
+    }
+
+    break;   
 
 }   
+
+// or
+
+
+switch(true){
+    case ($k==0 && $n>0):
+        echo"$n is a positive even number ";
+        break;
+
+    case ($k == 1 && $n<0):
+        echo"$n is a positive ODD number ";
+        break;
+    case ($k == 0 && $n<0):
+        echo"$n is a negative even number ";
+        break;
+    case ($k == 1 && $n<0):
+        echo"$n is a negative odd number ";
+        break;
+
+}
+
+
+/**
+ * new if ======================================
+ */
+
+$n=10;
+
+if ($n%2 == 0):
+   echo "Even";
+   echo PHP_EOL; //new line
+else:
+   echo "Odd";
+endif;

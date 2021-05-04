@@ -1,22 +1,14 @@
 <?php
 
 /**
- * Switch Case
+ * new if 
  */
 
-$k= "green";
+ $n=10;
 
-switch( $k ){
-    case 'red':
-    case 'green':
-        echo ucwords($k)." Color";
-        break;
-    case 'blue':
-        echo"Blue Color";
-        break;
-        
-       
-    default:
-        echo"not color";    
-
-}   
+ if ($n%2 == 0):
+    echo "Even";
+    echo PHP_EOL; //new line
+ else:
+    echo "Odd";
+ endif;
