@@ -282,3 +282,47 @@ if (false || false){
 }
 
 echo "\n";
+
+
+/**
+ *Ternary Module=====================
+ */
+
+$k=10;
+
+if(12 == $k){
+    echo"Twelve";
+
+}elseif(10 == $k){
+    echo "Ten";
+}else{
+    echo"A number";
+}
+
+echo"\n";
+
+$n = (12 == $k ) ? "Twelve" : (10 == $k) ? "Ten": "A number";
+echo $n;
+
+
+
+/**
+ * Switch Case
+ */
+
+$k= "green";
+
+switch( $k ){
+    case 'red':
+    case 'green':
+        echo ucwords($k)." Color";
+        break;
+    case 'blue':
+        echo"Blue Color";
+        break;
+        
+       
+    default:
+        echo"not color";    
+
+}   
