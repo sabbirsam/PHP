@@ -1,58 +1,21 @@
 <?php
-
+ 
 /**
- * new if 
+ *  go to , need a line where it should go
  */
 
- $n=10;
+ $i = 0;
+ a: $i++;
+ echo $i;
+ echo "\n";
 
- if ($n%2 == 0):
-    echo "Even";
-    echo PHP_EOL; //new line
+ if($i<10) goto a;
 
-elseif (true): 
-    
-else:
-    echo "Odd";
-endif;
+ /**
+  * for loop with multiple condition at the same time
+  */
 
-
-
-/**
- * If new
- */
-
-if($n%2==0):
-    ?>
-        even
-    <?php
-else:
-    ?>
-    Odd
-    <?php
-endif;
-      
-  
-
-/**
- * Switch new
- */
-
-switch ($n%2 ==0):
-    case 0:
-    echo "Even";
-    echo PHP_EOL; //new line
-    break;
-
-    default:
-    echo "Even";
-endswitch;
-
-
-/**
- * 
- * Ternary operator fix
- */
-$n=10;
- $result = ($n%2==0) ? "A" : (($n==11) ? "B" : "C");//always use () bracket at the end condition
- echo $result;
+  for($i=10,$j=1; $i>0; $i-=1,$j++){
+      echo $i.":".$j;
+      echo "\n";
+  }
