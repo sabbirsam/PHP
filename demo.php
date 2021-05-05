@@ -2,50 +2,65 @@
  
 
  /**  
-  * ternary colses on if else
- *  ternary Operator  isset(sam jodi hy) ? sam print koro : na hole default ta print koro
+  * Normal Function
  */
 
 
-$def_lat = 23.9;
-$def_lon = 90.8;
-// same thing in if else
+function oddEvenCalculation($n){
+    if($n % 2 == 0){
+        return 1;
+    }else{
+        return 0;
+    }
 
-if (isset($user_lat)){
-    $lat = $user_lat;
-}else{
-    $lat = $def_lat;
 }
-echo $lat;
 
+$x = 10;
 
-echo PHP_EOL;
-
-/**  
- *  Ternary Operator  ? : ->     isset(sam jodi hy) ? sam print koro : na hole default ta print koro
- */
-
-$def_lat = 23.9;
-$def_lon = 90.8;
-
-$user_lat; // this is the variable which will store user input 
-
-$lat = isset($user_lat) ? $user_lat : $def_lat; 
-//store = jodi $user_lat hy tahole $user_lat : na hole $def_lat
-
-echo $lat;
-echo PHP_EOL;
+if(oddEvenCalculation($x)){
+   echo "even";
+}else{
+    echo "ODD";
+}
 
 
  /**  
-  * Null colses     ??
- *  Null Operator   ??  
+  * Optimize Function
  */
-$def_lat = 23.9;
-$def_lon = 90.8;
 
-$user_lat; // this is the variable which will store user input 
+echo PHP_EOL;
 
-$lat = $user_lat ?? $def_lat; 
-//store = jodi $user_lat hy tahole $user_lat ??  na hole $def_lat
-echo $lat;
+
+function isEven($n){  //$n is parameter 
+    if($n % 2 == 0){
+        return true;
+    }
+
+    return false;  //here code is minimize
+
+}
+
+$x = 9;
+
+if(isEven($x)){  //here $x is argument
+   echo "even";
+}else{
+    echo "ODD";
+}
+
+
+ /**  
+  * Also can use function in another file and work here.  example function.php here defination is not declare but it has a body.
+ */
+
+echo PHP_EOL;
+
+include_once "function.php";  //is used to call function.php
+
+$x = 123;
+
+if(if_isEven($x)){  //here $x is argument
+   echo "even";
+}else{
+    echo "ODD";
+}
