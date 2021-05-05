@@ -511,3 +511,101 @@ if($i<10) goto a;
     echo $i.":".$j;
     echo "\n";
 }
+
+
+ 
+/**  
+ *  PHP 7 Specific Operator  <=>         =========================================start
+ */
+
+$x = 5;
+$y = 9;
+function graterOrsmaller($x , $y){
+   if($x>$y ){
+       return 1;
+   }elseif ($x<$y) {
+       return 0;
+   }else{
+       return -1;
+   }
+}
+
+
+// now use the one of the below code to run 
+if ( graterOrsmaller($x , $y)== 1){
+    echo "$x is grater than $y";
+}elseif (graterOrsmaller($x , $y)== 0) {
+    echo "$x is equal  $y";
+}else{
+    echo "$x is smaller than $y";
+}
+
+
+/**
+ * or
+ */  
+
+
+$res= $x <=> $y;
+if ( $res== 1){
+   echo "$x is grater than $y";
+}elseif ( $res== 0) {
+   echo "$x is equal  $y";
+}else{
+   echo "$x is smaller than $y";
+}
+
+/**  
+ *  PHP 7 Specific Operator  <=>         ========================================= End
+ */
+
+
+ 
+ /**  
+  * ternary colses on if else
+ *  ternary Operator  isset(sam jodi hy) ? sam print koro : na hole default ta print koro
+ */
+
+
+$def_lat = 23.9;
+$def_lon = 90.8;
+// same thing in if else
+
+if (isset($user_lat)){
+    $lat = $user_lat;
+}else{
+    $lat = $def_lat;
+}
+echo $lat;
+
+
+echo PHP_EOL;
+
+/**  
+ *  Ternary Operator  ? : ->     isset(sam jodi hy) ? sam print koro : na hole default ta print koro
+ */
+
+$def_lat = 23.9;
+$def_lon = 90.8;
+
+$user_lat; // this is the variable which will store user input 
+
+$lat = isset($user_lat) ? $user_lat : $def_lat; 
+//store = jodi $user_lat hy tahole $user_lat : na hole $def_lat
+
+echo $lat;
+echo PHP_EOL;
+
+
+ /**  
+  * Null colses     ??
+ *  Null Operator   ??  
+ */
+$def_lat = 23.9;
+$def_lon = 90.8;
+
+$user_lat; // this is the variable which will store user input 
+
+$lat = $user_lat ?? $def_lat; 
+//store = jodi $user_lat hy tahole $user_lat ??  na hole $def_lat
+echo $lat;
