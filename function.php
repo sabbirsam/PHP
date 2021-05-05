@@ -1,13 +1,15 @@
 <?php
  /**  
-  * Also can use function.php  in another file like demo and work here.  example demo/chap2 function.php
+  * Factorial
  */
 
-function if_isEven($n){  //$n is parameter 
-    if($n % 2 == 0){
-        return true;
+function fact($n){
+    if(gettype($n)!= "integer"){
+        return "Invalid";
     }
-
-    return false;  //here code is minimize
-
+    $res = 1;
+    for ($i = $n; $i >1 ; $i--){
+        $res= $res * $i;
+    }
+    return $res;
 }
