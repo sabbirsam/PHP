@@ -3,24 +3,81 @@ include_once "function.php";
 
 
   /**  
-  * Recursive function
+  * variable scope
  */
 
+ $a = "Sam";  //global scope
+ function variaScopeA(){
+  
+  echo $GLOBALS['a'];
+ 
+ }
+
+ variaScopeA();
+
+ echo PHP_EOL;
+//  second ================  
+echo PHP_EOL;
+
+ $a = "Sam";   //global scope
+ function variaScopeB(){
+
+  global $a;
+ 
+  echo $a; //work here
+ }
+
+ variaScopeB();
+
+ echo PHP_EOL;
+ //  Third ================
+
+ function variaScopeC(){
+
+  $a = "sam loal"; //local scope
+  echo $a ; //work here
+ 
+ }
+
+ variaScopeC();
+ echo $a ;// not work here if i didnt declare golabl
 
  echo PHP_EOL;
 
- function printNSO($start , $end, $step ){
 
-    if($start >$end){
-        return;
-    }
+ //  4th ================  
 
-    echo $start."\n";
-    // $start = $start + $step;
-    $start +=   $step;
+ echo PHP_EOL;
 
-    printNSO($start , $end, $step );
 
+ function statiScope(){
+
+   $i = $i ?? 0 ;   //nul collease operator
+  
+   $i++;
+   echo $i; 
+   echo "\n"; 
  }
 
- printNSO(6 , 12 , 3);
+ statiScope();
+ statiScope();
+ statiScope();
+ //print = 1 1 1 
+
+ echo PHP_EOL;
+
+
+ function statiScopes(){
+  static $i; //Static operator
+   $i = $i ?? 0 ;   //nul collease operator
+  
+   $i++;
+   echo $i; 
+   echo "\n"; 
+ }
+
+ statiScopes();
+ statiScopes();
+ statiScopes();
+
+  //print = 1 2 3
