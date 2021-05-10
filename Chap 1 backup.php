@@ -609,3 +609,198 @@ $user_lat; // this is the variable which will store user input
 $lat = $user_lat ?? $def_lat; 
 //store = jodi $user_lat hy tahole $user_lat ??  na hole $def_lat
 echo $lat;
+
+
+/**
+ * String Length 15 ta ase eikane
+ */
+$name = "MD Sabbir Ahmed";
+echo( strlen($name));
+echo PHP_EOL;
+// output: 15
+
+/**
+ * String word count 3 ta ase eikane
+ */
+
+$name = "MD Sabbir Ahmed";
+echo ( str_word_count($name));
+// output: 3
+echo PHP_EOL;
+
+/**
+ * String replace
+ */
+
+$name = "MD Sabbir Ahmed";
+$a =str_replace("MD" , "MUHAMMAD" , $name);  //word, ja diye replace korbw , jei string seta
+echo $name;// same aase. MD Sabbir Ahmed
+echo $a; //MUHAMMAD Sabbir Ahmed
+
+
+// output: 3
+echo PHP_EOL;
+
+$my_str = 'If the facts do not fit the theory, change the facts.';
+ 
+// Display replaced string
+echo str_replace("facts", "truth", $my_str);
+
+
+/**
+ * String str_replace with 4th parameter
+ */
+$my_str = 'If the sam do not fit the theory, change the sam.';
+ 
+// Perform string replacement
+echo str_replace("sam", "sabbir", $my_str, $count);
+
+echo PHP_EOL;
+ 
+// Display number of replacements performed
+echo "The text was replaced $count times.";
+
+//output: 
+// If the sabbir do not fit the theory, change the sabbir.
+// The text was replaced 2 times.
+
+
+/**
+ * Identical	$x === $y	True if $x is equal to $y, and they are of the same type
+ */
+$x = 25;
+$y = 35;
+$z = "25";
+$k = 25;
+
+// var_dump($x === $k); // Outputs: boolean True bcz both are int and both value are same 25
+// var_dump($x === $y); // Outputs: boolean false both are int but not same value
+// var_dump($x === $z); // Outputs: boolean false bith value are same but type is not same, one is int  , one is string
+
+/**
+bool(true) 
+bool(false)
+bool(false)
+ */
+
+echo PHP_EOL;
+/**
+ * 	Not identical	$x !== $y	True if $x is not equal to $y, or they are not of the same type
+ */
+$x = 25;
+$y = 35;
+$z = "25";
+$k = 25;
+
+// value can not be same for true 
+
+var_dump($x !== $k); // Outputs: boolean false bcz both are equal value and type 
+var_dump($x !== $y); // Outputs: boolean true both are int but value is not same 25  and 35
+var_dump($x !== $z); // Outputs: boolean true both value are not same and type is not same, one is int  , one is string
+
+/**
+bool(false)
+bool(true) 
+bool(true) 
+ */
+
+
+
+
+ /**
+ * Incrementing and Decrementing Operators
+ */
+
+$x = 10;
+echo ++$x; // Outputs: 11   //Increments $x by one, then returns $x
+echo "\n";
+echo $x;   // Outputs: 11   // x is 10 and ++ age, barbe age then return hbe so 10 + 1 = 11 then return so output 11
+
+echo "\n";
+ 
+$x = 10;
+echo $x++; // Outputs: 10  //Returns $x, then increments $x by one  // x is 10 and return so output 10
+echo "\n";
+echo $x;   // Outputs: 11 //  return 10 then increment so output is 11
+
+echo "\n";
+
+$x = 10;
+echo --$x; // Outputs: 9   //Decrements $x by one, then returns $x
+echo "\n";
+echo $x;   // Outputs: 9
+ 
+
+echo "\n";
+
+$x = 10;
+echo $x--; // Outputs: 10  //Returns $x, then decrements $x by one
+echo "\n";
+echo $x;   // Outputs: 9
+
+
+
+/**
+ * Spaceship Operator s
+ * 1. spaceship operator <=> returns 0 if both operands are equal $x == $y it return 0
+ * 2. 1 if the left is greater $x > $y , return 1
+ * 3. -1 if the right is greater $x < $y , return -1 left is small then rigt
+ * so========================== left choto -1, soman then 0 ar righnt choto 1.
+ */
+
+ /**
+ *  1< 1 and 1==1 and 1> 1 = as both operand are equal so it will return 0
+ */
+echo 1 <=> 1; // Outputs: 0   
+
+
+echo PHP_EOL;
+/**
+ * 1< 2   => true and 1 = 2  =>false and  1 > 2 => also false so first one is only true, so 1 less than 2. left is small then right so -1
+ */
+echo 1 <=> 2; // Outputs: -1
+echo PHP_EOL;
+
+/**
+ * 
+ */
+echo 2 <=> 1; // Outputs: 1   1 if the left is greater $x=2 > $y=1 , return 1
+echo PHP_EOL;
+ 
+// Comparing Floats
+/**
+ * 
+ */
+echo 1.5 <=> 1.5; // Outputs: 0
+echo PHP_EOL;
+
+/**
+ * 
+ */
+echo 1.5 <=> 2.5; // Outputs: -1
+echo PHP_EOL;
+
+/**
+ * 
+ */
+echo 2.5 <=> 1.5; // Outputs: 1
+echo PHP_EOL;
+ 
+// Comparing Strings
+/**
+ * 
+ */
+echo "x" <=> "x"; // Outputs: 0
+echo PHP_EOL;
+
+/**
+ * 
+ */
+echo "x" <=> "y"; // Outputs: -1
+echo PHP_EOL;
+
+/**
+ * 
+ */
+echo "y" <=> "x"; // Outputs: 1
+echo PHP_EOL;

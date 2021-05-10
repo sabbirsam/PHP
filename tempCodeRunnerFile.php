@@ -1,2 +1,2 @@
 <?php
-static $i;
+my_str
