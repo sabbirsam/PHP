@@ -1,7 +1,139 @@
 <?php
+
+// Index array & Neumeric Array===============
+$colors = array("Red", "Green", "Blue", "Yellow");
+$numbers = array(1, 2, 2.5, 4, 7, 10);
+ 
+// Sorting and printing array
+// sort($colors);
+// print_r($colors);
+
+echo PHP_EOL;
+echo PHP_EOL;
+
+/**
+ * Array
+(
+    [0] => Blue  
+    [1] => Green 
+    [2] => Red   
+    [3] => Yellow
+)
+ */ 
+//Decending order
+// rsort($colors);
+// print_r($colors);
+/**
+ * Array
+(
+    [0] => Yellow
+    [1] => Red   
+    [2] => Green 
+    [3] => Blue  
+)
+
+ */
+//newmeric
+// sort($numbers);
+// print_r($numbers);
+/**
+ * Array
+(
+    [0] => 1     
+    [1] => 2     
+    [2] => 2.5   
+    [3] => 4     
+    [4] => 7     
+    [5] => 10    
+)
+ */
+
+ /**
+  * Associative Array=====================
+  */
+
+$age = array(
+    "Peter"=>20, 
+    "Harry"=>14, 
+    "John"=>45, 
+    "Clark"=>35
+);
+ 
+// Sorting array by key and print
+asort($age); // assending sort in value wise
+print_r($age);
+/**
+ * Assending
+ * Array
+(
+    [Harry] => 14
+    [Peter] => 20
+    [Clark] => 35
+    [John] => 45 
+)
+
+ */
+
+echo PHP_EOL;
+echo PHP_EOL;
+
+arsort($age); //ar means decending sort in value wise
+print_r($age);
+/**
+ *
+ * Decending
+ *  Array
+(
+    [John] => 45
+    [Clark] => 35
+    [Peter] => 20
+    [Harry] => 14
+)
+ */
+
+echo PHP_EOL;
+echo PHP_EOL;
+
+
+rsort($age); // Assending sort by key wise
+print_r($age);
+/**
+ * Assending by key 
+ * Array
+(
+    [0] => 45
+    [1] => 35
+    [2] => 20
+    [3] => 14
+)
+
+ * 
+ */
+
+
+echo PHP_EOL;
+echo PHP_EOL;
+
+krsort($age); //// decending sort by key wise
+print_r($age);
+/**
+ * decending by key
+ * Array
+(
+    [3] => 14
+    [2] => 20
+    [1] => 35
+    [0] => 45
+)
+ */
+
+
+//  ====================================================================== Sorting above code
+
 /**  
   * Array 
  */
+
 
  $student = array(
    "Md Sabbir",
@@ -447,6 +579,25 @@ $student = array(
 foreach($student as $key){
     echo $key."\n";
 }
+
+// foreach example with key and value ============================
+$superhero = array(
+  "name" => "Peter Parker",
+  "email" => "peterparker@mail.com",
+  "age" => 18
+);
+
+// Loop through superhero array
+foreach($superhero as $key => $value){
+  echo $key . " : " . $value . "\n";
+}
+/**
+* 
+name : Peter Parker
+email : peterparker@mail.com
+age : 18
+==============================================================
+*/
 
 
 
@@ -1218,3 +1369,283 @@ print_r($name);
  [4] => SAM
 )
 */
+
+
+
+// Array Search ================================================================
+$name = array("a"=>"Apple","b"=>"Ball","c"=>"Cat","D"=>"Doll");
+$num = array("2",8,7,3,4,9,11,5);
+
+if(in_array(2,$num)){
+    echo "Found";
+}else{
+    echo "Not Found";
+}
+
+echo PHP_EOL;
+//3rd one is strict mane type o check korbe so ami "2" khhujtci but 8 nai  -> niddle mane ja khujbw, haystak jetar viotre khujbw, ar type
+if(in_array(2,$num,true)){
+    echo "Found";
+}else{
+    echo "Not Found";
+}
+
+/**
+    Found    
+    Not Found
+ * output 
+ * /
+/**
+ * 
+ */
+//  To find in where it was, menas ofset======================
+$num = array("2",8,7,3,4,9,11,5);
+echo PHP_EOL;
+$a = array_search(2, $num);
+echo $a;
+/**
+ * output: 0 mane sobar samne ase
+ */
+$name = array("a"=>"Apple","b"=>"Ball","c"=>"Cat","D"=>"Doll");
+
+ if(array_key_exists("b",$name)){
+     echo "found";
+ }
+//  or ========================================
+
+$b = array_key_exists("b",$name);
+echo $b;//output 1
+echo PHP_EOL;
+//  or ========================================
+
+if(key_exists("b",$name)){
+         echo "found";
+}else{
+    echo "not found";
+}
+//output: found
+
+
+
+/**
+ * Array intercept to find common in 2 array
+ */
+$n1=array(
+  1,5,7,9,6,3,4,5
+);
+
+$n2 =array(
+  11,32,42,15,3,4,5,8
+);
+
+$a = array_intersect($n1 , $n2);
+print_r($a);
+/**
+* Array       
+(
+  [1] => 5
+  [5] => 3
+  [6] => 4
+  [7] => 5
+)
+
+*/
+
+$n3=array(
+  "one"=>1, "five"=>5,"seven"=>7,
+);
+
+$n4 =array(
+  "Eleven"=> 11,"thirty two"=>32,"eight"=>7
+);
+
+$b = array_intersect($n3 , $n4);
+print_r($b);
+/**
+* Array
+(
+  [seven] => 7
+)
+
+*/
+
+
+$n3=array(
+  "one"=>1, "five"=>5,"seven"=>7,
+);
+
+$n4 =array(
+  "Eleven"=> 11,"thirty two"=>32,"seven"=>7
+);
+
+$b = array_intersect_assoc($n3 , $n4);
+print_r($b);
+/**
+* Array
+(
+  [seven] => 7
+)
+
+*/
+
+// difference finding ============================1st array kon elements 2nd array te nai seta print hbe
+$n1=array(
+  1,5,7,9,6,3,4,5
+);
+
+$n2 =array(
+  11,32,42,15,3,4,5,8
+);
+
+
+$b = array_diff($n3 , $n4);
+print_r($b);
+/**
+* Array
+(
+  [one] => 1  
+  [five] => 5 
+)
+*/
+// anothet with key check ====
+$n1=array(
+  1,5,7,9,6,3,4,5
+);
+
+$n2 =array(
+  11,32,42,15,3,4,5,8
+);
+
+
+$b = array_diff_assoc($n3 , $n4);
+print_r($b);
+/**
+* Array
+(
+  [one] => 1
+  [five] => 5
+)
+*//**
+ * Array intercept to find common in 2 array
+ */
+$n1=array(
+  1,5,7,9,6,3,4,5
+);
+
+$n2 =array(
+  11,32,42,15,3,4,5,8
+);
+
+$a = array_intersect($n1 , $n2);
+print_r($a);
+/**
+* Array       
+(
+  [1] => 5
+  [5] => 3
+  [6] => 4
+  [7] => 5
+)
+
+*/
+
+$n3=array(
+  "one"=>1, "five"=>5,"seven"=>7,
+);
+
+$n4 =array(
+  "Eleven"=> 11,"thirty two"=>32,"eight"=>7
+);
+
+$b = array_intersect($n3 , $n4);
+print_r($b);
+/**
+* Array
+(
+  [seven] => 7
+)
+
+*/
+
+
+$n3=array(
+  "one"=>1, "five"=>5,"seven"=>7,
+);
+
+$n4 =array(
+  "Eleven"=> 11,"thirty two"=>32,"seven"=>7
+);
+
+$b = array_intersect_assoc($n3 , $n4);
+print_r($b);
+/**
+* Array
+(
+  [seven] => 7
+)
+
+*/
+
+// difference finding ============================1st array kon elements 2nd array te nai seta print hbe
+$n1=array(
+  1,5,7,9,6,3,4,5
+);
+
+$n2 =array(
+  11,32,42,15,3,4,5,8
+);
+
+
+$b = array_diff($n3 , $n4);
+print_r($b);
+/**
+* Array
+(
+  [one] => 1  
+  [five] => 5 
+)
+*/
+// anothet with key check ====
+$n1=array(
+  1,5,7,9,6,3,4,5
+);
+
+$n2 =array(
+  11,32,42,15,3,4,5,8
+);
+
+
+$b = array_diff_assoc($n3 , $n4);
+print_r($b);
+/**
+* Array
+(
+  [one] => 1
+  [five] => 5
+)
+*/
+
+/**
+ * ==========================================================================IMPORTANT-============================
+ */
+
+// Array IMPORTATN knowledge 
+// =======================================Array_walk;
+$num = array(1,2,3,4,8,6,7);
+
+function square($n){
+    printf("The square of %d is %d\n",$n , $n*$n);
+}
+
+array_walk($num , 'square');  //array vitor function call korte 'square' emn kroe kora lage
+
+/**
+ * The square of 1 is 1 
+The square of 2 is 4 
+The square of 3 is 9 
+The square of 4 is 16
+The square of 8 is 64
+The square of 6 is 36
+The square of 7 is 49
+ */
+
