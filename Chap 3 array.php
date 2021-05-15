@@ -1649,3 +1649,251 @@ The square of 6 is 36
 The square of 7 is 49
  */
 
+
+
+
+ 
+// Array IMPORTATN knowledge 
+// =======================================array_map   mainly work for return;
+$num = array(1,2,3,4,8,6,7);
+
+
+function cube($n){
+    return $n*$n*$n;
+}
+
+$newArray = array_map('cube', $num); //first function then array
+print_r($newArray);
+/**
+ * Array
+(
+    [0] => 1  
+    [1] => 8  
+    [2] => 27 
+    [3] => 64 
+    [4] => 512
+    [5] => 216
+    [6] => 343
+)
+ */
+
+
+ 
+// Array IMPORTATN knowledge 
+// =======================================array_filter   mainly work for    ->     true return;
+$num = array(1,2,3,4,8,6,7);
+
+
+function filterFUn($n){
+    return $n%2 == 0; //mane true hole return korbe
+}
+
+$newArray = array_filter($num,'filterFUn'); //first function then array
+print_r($newArray);
+/**
+ * main Array 
+(
+    [0] => 1  
+    [1] => 2  
+    [2] => 3 
+    [3] => 4 
+    [4] => 8
+    [5] => 6
+    [6] => 7
+)
+ */
+
+//  output: 
+/**
+ * Array       
+(
+    [1] => 2
+    [3] => 4
+    [4] => 8
+    [5] => 6
+)
+
+ */
+
+
+
+
+// Array IMPORTATN knowledge 
+// =======================================array_filter   mainly work for return;
+$num = array('sam','ron','jon','sim',);
+
+
+function filterByS($n){
+    return $n[0]=='s';
+}
+
+$newArray = array_filter($num,'filterByS'); //first function then array
+print_r($newArray);
+
+/**
+ * Array
+(
+    [0] => sam
+    [3] => sim
+)
+ */
+
+
+
+ /**
+ * Array reduce===================
+ */
+
+$num = array(1,3,2);
+
+
+function filterFUn($oldValue, $newValue){
+    return $oldValue+$newValue; //mane true hole return korbe
+}
+
+$newArray = array_reduce($num,'filterFUn'); //first function then array
+print_r($newArray);
+/**
+ * output: 6
+ * filterFUn(0, 1) = 0+1=1 return 1
+ * filterFUn(1, 3) = 1+3=4 return 4
+ * filterFUn(4, 2) = 4+2=6 return 6
+ * output 6
+ */
+
+ /**
+ * Array store in specifi way==========================================================
+ */
+
+
+$number = array();
+for($i = 5; $i<10; $i++){
+    array_push($number, $i);
+}
+
+print_r($number);
+/**
+ * Array       
+(
+    [0] => 5
+    [1] => 6
+    [2] => 7
+    [3] => 8
+    [4] => 9
+)
+ */
+
+//  Array input =============================
+$number = array();
+for($i = 5; $i<10; $i++){
+    array_unshift($number, $i);
+}
+
+print_r($number);
+/**
+ * Array       
+(
+    [0] => 9
+    [1] => 8
+    [2] => 7
+    [3] => 6
+    [4] => 5
+
+ */
+
+ 
+/**
+ * Array store in another way===================
+ */
+
+$number = range(1, 4, 2);  //koto theke , koto obdi , koto gor kore stepping 
+$number = range(1, 4);
+print_r($number);
+
+/**
+ * Array
+(
+    [0] => 1
+    [1] => 2
+    [2] => 3
+    [3] => 4
+)
+ */
+
+ /**
+ * ===================print them
+ */
+
+foreach(range(1, 10, 2) as $oddNumber){
+  echo $oddNumber."\n";
+}
+/**
+1
+3
+5
+7
+9
+*/
+
+// rndom number generator  ========================   mt_rand
+
+$random = mt_rand(0,7);
+echo  $random;
+
+
+$num = range(1,8);
+$random = mt_rand(0,7);
+if($random %2 == 0){
+    echo "Even NUmber";
+}else{
+    echo "ODD NUmber";
+}
+
+
+// Array number suffle ========================
+$num = range(1,8);
+shuffle($num);
+print_r($num);
+/**
+ * Array       
+(
+    [0] => 3
+    [1] => 1
+    [2] => 6
+    [3] => 4
+    [4] => 7
+    [5] => 8
+    [6] => 5
+    [7] => 2
+)
+ */
+
+
+ 
+// Array number suffle with associative array and protect key to show
+$num = array(
+  'a'=>'Apple',
+  'b'=>'Bat',
+  'c'=>'Cat',
+);
+// shuffle($num);
+// print_r( $num );
+/**
+* Array   here we lost key
+(
+  [0] => Bat
+  [1] => Cat
+  [2] => Apple
+)
+*/
+
+$k = array_rand($num);
+// echo $k; //will print all key randomly one 
+// echo $num[$k] ;//it will print all value one randomly
+
+
+print_r($num[$k]); 
+
+
+
+
