@@ -1,6 +1,22 @@
 <?php
 include_once "../Assets/function.php";   //used for multiple checkbox
 
+function isChecked($inputName, $value){  //$inputName is for haystack ar $value is niddle
+    if(isset($_POST[$inputName]) && is_array($_POST[$inputName]) && in_array($value, $_POST[$inputName])){
+        echo "checked";
+    }
+}
+
+//or
+
+
+function isSecondChecked($value){  //$value is niddle
+    if(isset($_POST['fruits']) && is_array($_POST['fruits']) && in_array($value, $_POST['fruits'])){
+        echo "checked";
+    }
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -77,6 +93,21 @@ include_once "../Assets/function.php";   //used for multiple checkbox
                     <label for="group_accept2" class="label-inline">Apple </label>
                     <br>
                     <input type="checkbox" id="group_accept3" name="fruits[]" value="Mango" <?php isChecked('fruits','Mango');?>>  <!--Multiple checkbox name must be array-->
+                    <label for="group_accept3" class="label-inline">Mango </label>
+
+                </div>
+
+
+                <div>
+                    <label class="label">Select some fruit </label>  <!--name="fruits[]"    Multiple checkbox name must be array-->
+
+                    <input type="checkbox" id="group_accept1" name="fruits[]" value="Orange" <?php isSecondChecked('Orange');?>>  <!--Multiple checkbox name must be array-->
+                    <label for="group_accept1" class="label-inline">Orange </label>
+                    <br>
+                    <input type="checkbox" id="group_accept2" name="fruits[]" value="Apple" <?php isSecondChecked('Apple');?>> <!--name="fruits[]"   Multiple checkbox name must be array-->
+                    <label for="group_accept2" class="label-inline">Apple </label>
+                    <br>
+                    <input type="checkbox" id="group_accept3" name="fruits[]" value="Mango" <?php isSecondChecked('Mango');?>>  <!--Multiple checkbox name must be array-->
                     <label for="group_accept3" class="label-inline">Mango </label>
 
                 </div>

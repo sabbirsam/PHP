@@ -7,3 +7,13 @@ function isChecked($inputName, $value){  //$inputName is for haystack ar $value 
         echo "checked";
     }
 }
+
+ //or it can be like below
+//
+
+function isSecondChecked($value){  //$value is niddle
+    if(isset($_POST['fruits']) && is_array($_POST['fruits']) && in_array($value, $_POST['fruits'])){
+        echo "checked";
+    }
+}
+
