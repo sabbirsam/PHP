@@ -1,7 +1,4 @@
-<?php
-include_once "../Assets/function.php";   //used for multiple checkbox
 
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -67,26 +64,12 @@ include_once "../Assets/function.php";   //used for multiple checkbox
                     <label for="accept" class="label-inline">Accept </label>
                 </div>
 
-                <div>
-                    <label class="label">Select some fruit </label>  <!--name="fruits[]"    Multiple checkbox name must be array-->
-
-                    <input type="checkbox" id="group_accept1" name="fruits[]" value="Orange" <?php isChecked('fruits','Orange');?>>  <!--Multiple checkbox name must be array-->
-                    <label for="group_accept1" class="label-inline">Orange </label>
-                    <br>
-                    <input type="checkbox" id="group_accept2" name="fruits[]" value="Apple" <?php isChecked('fruits','Apple');?>> <!--name="fruits[]"   Multiple checkbox name must be array-->
-                    <label for="group_accept2" class="label-inline">Apple </label>
-                    <br>
-                    <input type="checkbox" id="group_accept3" name="fruits[]" value="Mango" <?php isChecked('fruits','Mango');?>>  <!--Multiple checkbox name must be array-->
-                    <label for="group_accept3" class="label-inline">Mango </label>
-
-                </div>
-
                 <input type="submit">
             </form>
             <div class="row">
                 <p>
-                   User name: <?php echo $fname;?> <br>
-                   Password: <?php echo $pass;?>
+                    User name: <?php echo $fname;?> <br>
+                    Password: <?php echo $pass;?>
                 </p>
             </div>
         </div>

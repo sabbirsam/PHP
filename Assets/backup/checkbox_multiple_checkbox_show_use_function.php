@@ -1,5 +1,11 @@
 <?php
-include_once "../Assets/function.php";   //used for multiple checkbox
+//include_once "../Assets/function.php";   //used for multiple checkbox
+function isChecked($inputName, $value){  //$inputName is for haystack ar $value is niddle
+    if(isset($_POST[$inputName]) && is_array($_POST[$inputName]) && in_array($value, $_POST[$inputName])){
+        echo "checked";
+    }
+}
+
 
 ?>
 <!DOCTYPE html>
@@ -85,8 +91,8 @@ include_once "../Assets/function.php";   //used for multiple checkbox
             </form>
             <div class="row">
                 <p>
-                   User name: <?php echo $fname;?> <br>
-                   Password: <?php echo $pass;?>
+                    User name: <?php echo $fname;?> <br>
+                    Password: <?php echo $pass;?>
                 </p>
             </div>
         </div>
