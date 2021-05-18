@@ -30,8 +30,26 @@ $country=array("Dhaka","Khulna","Rangpur","Barishal");
 <body>
 <div class="container">
     <div class="row">
-<!--      ============================================  select field-->
+        <!--      ============================================  select field-->
         <div class="column column-60 column-offset-20">
+            <div class="row">
+                <div>
+
+                </div>
+
+                <form method="POST">
+
+                    <label for="country">Select Country</label>
+                    <select style="height: 200px;" id="country" name="country[]" multiple> <!-- //use array country[] insted of usethis for multiple select-->
+                        <option value="" disabled selected>Select Division</option>
+
+                        <?php selectFirlds($country);?>
+
+                    </select>
+
+                    <input type="submit">
+                </form>
+            </div>
             <p>
                 <?php
                 //                print_r($_POST);
@@ -56,23 +74,6 @@ $country=array("Dhaka","Khulna","Rangpur","Barishal");
                 }
                 ?>
             </p>
-
-            <div class="row">
-
-                <form method="POST">
-
-                    <label for="country">Select Country</label>
-                    <select style="height: 200px;" id="country" name="country[]" multiple> <!-- //use array country[] insted of usethis for multiple select-->
-                        <option value="" disabled selected>Select Division</option>
-
-                        <?php selectFirlds($country, $scountry);?>
-
-                    </select>
-
-                    <input type="submit">
-                </form>
-            </div>
-
         </div>
     </div>
 </div>

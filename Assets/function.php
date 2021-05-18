@@ -1,19 +1,14 @@
 <?php
-//in_array(jake khujbw niddle, jar vitore khujbo haystack)
-//  and isset for remove empty error then is_array for check is it array or not then in_array is for array search
+// auto add all option value in select field by using array
 
-function isChecked($inputName, $value){  //$inputName is for haystack ar $value is niddle
-    if(isset($_POST[$inputName]) && is_array($_POST[$inputName]) && in_array($value, $_POST[$inputName])){
-        echo "checked";
+function selectFirlds($options , $selectValues){
+    foreach ($options as $option){
+//        printf("<option value='%s'>%s</option>",$option,$option);
+        $selected = '';
+//        in_array() used
+        if(in_array($option, $selectValues)){
+            $selected="selected";
+        }
+        printf("<option value='%s' %s>%s</option>\n",strtolower($option), $selected, ucwords($option));
     }
 }
-
- //or it can be like below
-//
-
-function isSecondChecked($value){  //$value is niddle
-    if(isset($_POST['fruits']) && is_array($_POST['fruits']) && in_array($value, $_POST['fruits'])){
-        echo "checked";
-    }
-}
-
