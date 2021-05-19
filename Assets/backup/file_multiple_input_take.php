@@ -8,13 +8,13 @@ $allowedFiles = array(
 );
 
 if($_FILES['photo']){
-        $totslFiles = count($_FILES['photo']['name']);
-        for($i=0; $i<$totslFiles; $i++){
-            if(in_array($_FILES['photo']['type'][$i] , $allowedFiles) != false  &&  $_FILES['photo']['size'][$i] <  5*1024*1024) {
-                move_uploaded_file($_FILES['photo']['tmp_name'][$i],"../Assets/File/".$_FILES['photo']['name'][$i]);
-            }
+    $totslFiles = count($_FILES['photo']['name']);
+    for($i=0; $i<$totslFiles; $i++){
+        if(in_array($_FILES['photo']['type'][$i] , $allowedFiles) != false  &&  $_FILES['photo']['size'][$i] <  5*1024*1024) {
+            move_uploaded_file($_FILES['photo']['tmp_name'][$i],"../Assets/File/".$_FILES['photo']['name'][$i]);
         }
-  }
+    }
+}
 
 ?>
 <!DOCTYPE html>
@@ -49,7 +49,7 @@ if($_FILES['photo']){
                     <pre>
                         <p>
                             <?php
-                                print_r($_FILES);
+                            print_r($_FILES);
                             ?>
                         </p>
                     </pre>
@@ -57,19 +57,19 @@ if($_FILES['photo']){
             </div>
 
             <br method="POST" enctype="multipart/form-data">
-                <label for="fname">First Name</label>
-                <input type="text" id="fname" name="fname">
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" name="fname">
 
-                <label for="lname">Last Name</label>
-                <input type="text" id="lname"  name="lname">
+            <label for="lname">Last Name</label>
+            <input type="text" id="lname"  name="lname">
 
-                <label for="photo">Choose Files</label>
-                <input type="file" id="photo"  name="photo[]"></br>
-                <input type="file" id="photo"  name="photo[]"></br>
-                <input type="file" id="photo"  name="photo[]">
+            <label for="photo">Choose Files</label>
+            <input type="file" id="photo"  name="photo[]"></br>
+            <input type="file" id="photo"  name="photo[]"></br>
+            <input type="file" id="photo"  name="photo[]">
 
 
-                <button type="submit">Submit</button>
+            <button type="submit">Submit</button>
             </form>
         </div>
     </div>
