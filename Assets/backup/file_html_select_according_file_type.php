@@ -1,12 +1,7 @@
 <?php
 //include_once "../Assets/function.php";   //used for multiple checkbox
 if($_FILES['photo']){
-    $allowedFiles = array(
-        'image/png',
-        'image/jpg',
-        'image/jpeg'
-    );
-    if(in_array($_FILES['photo']['type'] , $allowedFiles) != false  &&  $_FILES['photo']['size'] <  5*1024*1024) {
+    if($_FILES['photo']['type'] == 'image/png' || $_FILES['photo']['type'] == 'image/jpg' || $_FILES['photo']['type'] == 'image/jpeg'){
         move_uploaded_file($_FILES['photo']['tmp_name'],"../Assets/File/".$_FILES['photo']['name']);
     }
 }

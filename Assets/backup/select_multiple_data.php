@@ -1,16 +1,12 @@
 <?php
 //include_once "../Assets/function.php";   //used for multiple checkbox
-if($_FILES['photo']){
-    $allowedFiles = array(
-        'image/png',
-        'image/jpg',
-        'image/jpeg'
-    );
-    if(in_array($_FILES['photo']['type'] , $allowedFiles) != false  &&  $_FILES['photo']['size'] <  5*1024*1024) {
-        move_uploaded_file($_FILES['photo']['tmp_name'],"../Assets/File/".$_FILES['photo']['name']);
+
+function selectFirlds($options){
+    foreach ($options as $option){
+        printf("<option value='%s'>%s</option>",strtolower($option), ucwords($option));
     }
 }
-
+$country= array("Bangladesh", "japan","saudi","Pakistan");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,35 +37,27 @@ if($_FILES['photo']){
         <div class="column column-60 column-offset-20">
             <div>
                 <h1>
-                    <!--issue check  ki ki file ase ta dekha jabe-->
-                    <pre>
-                        <p>
-                            <?php
-                            print_r($_POST);
-                            print_r($_FILES);
-                            ?>
-                        </p>
-                    </pre>
-
-
                     <?php
+                    //                    print_r($_POST['country']);
+                    $acountry= filter_input(INPUT_POST,'country',FILTER_SANITIZE_STRING,FILTER_REQUIRE_ARRAY);
+                    if(count($acountry) >0){
+                        echo "you have selected: ". join(", ",$acountry);
+                    }
 
+                    /* if(isset($_POST['country']) && $_POST['country'] !=''){
+                         printf("You select : %s",filter_input(INPUT_POST,'country',FILTER_SANITIZE_STRING));  //this is not sanitize
+                     }*/
                     ?>
-
                 </h1>
             </div>
 
-            <form method="POST" enctype="multipart/form-data">
-                <label for="fname">First Name</label>
-                <input type="text" id="fname" name="fname">
-
-                <label for="lname">Last Name</label>
-                <input type="text" id="lname"  name="lname">
-
-                <label for="photo">First Name</label>
-                <input type="file" id="photo"  name="photo">
-
-                <button type="submit">Submit</button>
+            <form method="POST">
+                <label for="country">Select your Country</label>
+                <select id="country" name="country[]" multiple>
+                    <option style="height: 25px;" value="" disabled selected>Select Division</option>
+                    <?php selectFirlds($country);?>
+                </select>
+                <input type="submit">
             </form>
         </div>
     </div>

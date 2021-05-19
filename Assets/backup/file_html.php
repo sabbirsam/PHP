@@ -1,15 +1,5 @@
 <?php
 //include_once "../Assets/function.php";   //used for multiple checkbox
-if($_FILES['photo']){
-    $allowedFiles = array(
-        'image/png',
-        'image/jpg',
-        'image/jpeg'
-    );
-    if(in_array($_FILES['photo']['type'] , $allowedFiles) != false  &&  $_FILES['photo']['size'] <  5*1024*1024) {
-        move_uploaded_file($_FILES['photo']['tmp_name'],"../Assets/File/".$_FILES['photo']['name']);
-    }
-}
 
 ?>
 <!DOCTYPE html>
@@ -41,25 +31,13 @@ if($_FILES['photo']){
         <div class="column column-60 column-offset-20">
             <div>
                 <h1>
-                    <!--issue check  ki ki file ase ta dekha jabe-->
-                    <pre>
-                        <p>
-                            <?php
-                            print_r($_POST);
-                            print_r($_FILES);
-                            ?>
-                        </p>
-                    </pre>
-
-
                     <?php
 
                     ?>
-
                 </h1>
             </div>
 
-            <form method="POST" enctype="multipart/form-data">
+            <form method="POST">
                 <label for="fname">First Name</label>
                 <input type="text" id="fname" name="fname">
 

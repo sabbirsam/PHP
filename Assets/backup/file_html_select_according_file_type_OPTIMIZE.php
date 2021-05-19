@@ -48,6 +48,16 @@ if($_FILES['photo']){
                             print_r($_POST);
                             print_r($_FILES);
                             ?>
+<!--                            vardum kore output-->
+                            <!--[photo] => Array
+                                (
+                                    [name] => wp-dark-mode-ultimate_2.zip
+                                    [type] => application/zip
+                                    [tmp_name] => C:\xampp\tmp\php90E1.tmp
+                                    [error] => 0
+                                    [size] => 108498
+                                )-->
+
                         </p>
                     </pre>
 
