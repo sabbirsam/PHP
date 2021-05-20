@@ -1,6 +1,7 @@
 <?php
 include_once "../Assets/function.php";   //used for multiple checkbox
 
+
 $task = 'encode';  // take a mood give any value example encode, now encode is empty so it has no value
 if (isset($_GET['task']) && $_GET['task'] != ''){
     $task = $_GET['task'];
@@ -21,6 +22,8 @@ if('key' == $task){
 
 //============data encodeing
 
+
+
 $encodedScrambleData = '';
 if('encode' == $task){
     $data = $_POST['data'] ?? '';// from name of input field
@@ -28,6 +31,28 @@ if('encode' == $task){
     if($data != ''){
         $encodedScrambleData = encodedScrambleData($data , $key);
     }
+}
+
+//below code in function.php
+function encodedScrambleData($originalData, $key){
+    $original_key = 'abcdefghijklmnopqrstuvwxyz1234567890';
+
+    $data = '';
+    $length = strlen($originalData);
+
+    for($i=0; $i<$length; $i++){
+        $currentCharacter = $originalData[$i];
+
+        $postion= strpos($original_key, $currentCharacter);//haystack and then niddle
+
+        if($postion !== false){
+            $data .= $key[$postion];
+        }
+        else{
+            $data .= $currentCharacter;
+        }
+    }
+    return $data;
 }
 
 ?>
@@ -66,7 +91,7 @@ if('encode' == $task){
             <p>
                 <a href="./form.php?task=encode">Encode</a>
                 <a href="./form.php?task=decode">Decode</a>
-<!--                <a href="javascript:window.location.href=window.location.href">Generate Key</a>-->  <!--//use this js code to relaod-> javascript:window.location.href=window.location.href-->
+                <!--                <a href="javascript:window.location.href=window.location.href">Generate Key</a>-->  <!--//use this js code to relaod-> javascript:window.location.href=window.location.href-->
                 <a href="./form.php?task=key">Generate Key</a>  <!--//  or use this way-> ./ mane ami Assets folder er vitore then form.php?task=key
             </p>-->
         </div>
@@ -76,18 +101,18 @@ if('encode' == $task){
         <div class="column column-60 column-offset-20">
 
             <form method="POST" action="form.php" ">
-                <label for="key">Key</label>
-                <input type="text" id="key" name="key" <?php displayKey($key);?>>
+            <label for="key">Key</label>
+            <input type="text" id="key" name="key" <?php displayKey($key);?>>
 
-                <label for="data">Data</label>
-                <textarea  id="data"  name="data"><?php if(isset($_POST['data'])){ echo $_POST['data'];}?></textarea>
+            <label for="data">Data</label>
+            <textarea  id="data"  name="data"><?php if(isset($_POST['data'])){ echo $_POST['data'];}?></textarea>
 
-                <label for="result">Result</label>
-                <textarea  id="result"  name="result"><?php echo $encodedScrambleData;?> </textarea>
+            <label for="result">Result</label>
+            <textarea  id="result"  name="result"><?php echo $encodedScrambleData;?> </textarea>
 
-                <div>
-                    <button type="submit">Submit</button>
-                </div>
+            <div>
+                <button type="submit">Submit</button>
+            </div>
             </form>
         </div>
     </div>

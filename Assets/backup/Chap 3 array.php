@@ -981,13 +981,13 @@ Array
 
 echo PHP_EOL;
 
-function printData(&$demo){   //here & is added so location is copid so change in both side  // its also know as shallow copy /copy by reffer
+function printDatas(&$demo){   //here & is added so location is copid so change in both side  // its also know as shallow copy /copy by reffer
   $demo['name']= $demo['name']." Ahmed";
   //$demo['name'].= " Ahmed";//
   print_r($demo);
 }
 
-printData($demo);
+printDatas($demo);
 echo PHP_EOL;
 print_r($demo);
 
@@ -1060,11 +1060,11 @@ var_dump($names);
 echo PHP_EOL;
 echo PHP_EOL;
 
-function myFilter($var){
+function myFilterx($var){
     return ($var !== NULL && $var !== FALSE && $var !== "");
 }
 
-$a = array_filter($names,"myFilter");
+$a = array_filter($names,"myFilterx");
 var_dump($a);
 /**
  * array(2) {
@@ -1747,11 +1747,11 @@ print_r($newArray);
 $num = array(1,3,2);
 
 
-function filterFUn($oldValue, $newValue){
+function filterFUns($oldValue, $newValue){
     return $oldValue+$newValue; //mane true hole return korbe
 }
 
-$newArray = array_reduce($num,'filterFUn'); //first function then array
+$newArray = array_reduce($num,'filterFUns'); //first function then array
 print_r($newArray);
 /**
  * output: 6

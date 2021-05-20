@@ -54,21 +54,21 @@ echo "Factorial of {$x} =  ".fact($x);
  */
 
 
-function deliveryItes($coffey="Cafecino" , $price="10"){
+function adeliveryItes($coffey="Cafecino" , $price="10"){
     echo "{$coffey} has been served with discount {$price}%";
 }
 
 include_once "function.php";
 $a = "Cafe";
 $b =" 10";
-deliveryItes($a , $b);
+adeliveryItes($a , $b);
 
 
 /**  
   * Factorial
  */
 
-function fact($n){
+function facts($n){
     if(gettype($n)!= "integer"){
         return "Invalid";
     }
@@ -370,7 +370,7 @@ echo $mynum; // Outputs: 25
 
 // Passing Arguments to a Function by Reference  &   => &$number
  
-function selfMultiply(&$number){
+function selfMultiplyq(&$number){
     $number *= $number;
     return $number;
 }
@@ -378,7 +378,7 @@ function selfMultiply(&$number){
 $mynum = 5;
 echo $mynum; // Outputs: 5
  
-selfMultiply($mynum);
+selfMultiplyq($mynum);
 echo $mynum; // Outputs: 25
 /**
  * 5
@@ -388,15 +388,15 @@ echo $mynum; // Outputs: 25
 
 
 //  Example another =============================================================
-function selfMultiply($number){
+function selfMultiplyz($number){
     echo $number * $number;
     
 }
-selfMultiply(5);
+selfMultiplyz(5);
 //output : 25
 
 // now ===========================================without refferecne
-function selfMultiply($number){
+function selfMultiplya($number){
     $number = $number * $number;
     return $number;
   
@@ -405,13 +405,13 @@ function selfMultiply($number){
 $mynum = 5;
 echo $mynum; // Outputs: 5
  
-selfMultiply($mynum);
+selfMultiplya($mynum);
 echo $mynum; // Outputs: 25
 
 //output 5   5
 
 // now ===========================================with refferecne
-function selfMultiply(&$number){
+function selfMultiplyx(&$number){
     $number = $number * $number;
     return $number;
   
@@ -420,12 +420,12 @@ function selfMultiply(&$number){
 $mynum = 5;
 echo $mynum; // Outputs: 5
  
-selfMultiply($mynum);
+selfMultiplyx($mynum);
 echo $mynum; // Outputs: 25
 
 //output 5   25
 
-function selfMultiply(&$n){ //here whatever value i use return must be same as it here
+function selfMultiplys(&$n){ //here whatever value i use return must be same as it here
     var_dump($n);  
     $n =  $n * $n;
     var_dump($n);
@@ -435,7 +435,7 @@ $my = 5;
 echo $my;
 echo PHP_EOL;
 
-selfMultiply($my);
+selfMultiplys($my);
 echo $my;
 
 
@@ -450,7 +450,7 @@ function test(){
  
 test(); // Outputs: Hello World!
  
-echo $greet; // Generate undefined variable error  //// global $greet; without declare it will generate error
+//echo $greet; // Generate undefined variable error  //// global $greet; without declare it will generate error
 
 // anoter example ========================================================
 
@@ -458,12 +458,12 @@ echo $greet; // Generate undefined variable error  //// global $greet; without d
 $greet = "Hello World!";
  
 // Defining function
-function test(){
+function tests(){
     global $greet;
     echo $greet;
 }
  
-test();  // Generate undefined variable error
+tests();  // Generate undefined variable error
  
 echo $greet; // Outputs: Hello World!
 
