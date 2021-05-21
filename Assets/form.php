@@ -1,34 +1,9 @@
 <?php
 include_once "../Assets/function.php";   //used for multiple checkbox
 
-$task = 'encode';  // take a mood give any value example encode, now encode is empty so it has no value
-if (isset($_GET['task']) && $_GET['task'] != ''){
-    $task = $_GET['task'];
-}
-
-$key = 'abcdefghijklmnopqrstuvwxyz1234567890';
 
 
 
-if('key' == $task){
-    $key_original = str_split($key);  //jehetu kono faka space nai $key gulo te so string to array banate ami str_split use korlam
-    shuffle($key_original);
-    $key = join('',$key_original);
-
-}elseif (isset($_POST['key']) && $_POST['key'] != ''){  //take method which is POST and key holo for er value ja fole submit dile sei key theke jasse
-    $key = $_POST['key'];
-}
-
-//============data encodeing
-
-$encodedScrambleData = '';
-if('encode' == $task){
-    $data = $_POST['data'] ?? '';// from name of input field
-
-    if($data != ''){
-        $encodedScrambleData = encodedScrambleData($data , $key);
-    }
-}
 
 ?>
 <!DOCTYPE html>
@@ -75,7 +50,7 @@ if('encode' == $task){
     <div class="row">
         <div class="column column-60 column-offset-20">
 
-            <form method="POST" action="form.php" ">
+            <form method="POST" action="form.php" <?php if('decode'== $task) {echo "?task=decode";};?>">
                 <label for="key">Key</label>
                 <input type="text" id="key" name="key" <?php displayKey($key);?>>
 
