@@ -332,3 +332,192 @@ echo $find; //3
 echo PHP_EOL;
 $find =  strripos($name, "IS"); //haystack, then niddle
 echo $find; //11
+
+/**  
+  * ===========================String Replace by str_replace=============================
+ * 
+ */
+$name = "My name Name name is IS Sabbir Ahmed Sam sam";
+$newString = str_replace("name","Name",$name); //"ki khujbw" "ki replace korbw" , " kar vetor" 
+$newStringss = str_ireplace("name","Name",$name); //"ki khujbw" "ki replace korbw" , " kar vetor"  case insecsative
+$newStringss = str_ireplace("name","Name",$name, $count); //"ki khujbw" "ki replace korbw" , " kar vetor", "koyta replace holo"  case insecsative
+
+echo $newString;  //My Name Name is IS Sabbir Ahmed Sam sam
+
+echo PHP_EOL;
+echo $newStringss;
+echo PHP_EOL;
+echo $count; //3
+
+echo PHP_EOL;
+echo PHP_EOL;
+echo PHP_EOL;
+ 
+$name = "My name is Sabbir Ahmed";  // multiple replaement                 My name is Sabbir Ahmed
+$name = str_ireplace(array("name","Sabbir"), array("Name","Sam"),$name); //My Name is Sam Ahmed
+echo $name;
+
+/**  
+  * ===========================String Trim=============================
+ * 
+ */
+$name = "  My  \n";
+$a = trim($name);
+echo "\n";
+echo $a;
+echo "Sabbir Ahmed";
+// output  MySabbir Ahmed  so here \n and next line added together;
+echo PHP_EOL;
+echo PHP_EOL;
+
+
+$name = "  My  \n,";
+$a = trim($name, ' ,'); // ' ' mane white space r , comma gulo bad dibe only
+echo "\n";
+echo $a;
+echo "Sabbir Ahmed";  // My
+                      //Sabbir Ahmed
+
+$name = "  My  \n,";
+$a = trim($name, ' ,'); // ' ' mane white space r , comma gulo bad dibe only
+echo "\n";
+echo $a;
+echo "Sabbir Ahmed";  // My
+                      //,Sabbir Ahmed
+
+
+echo PHP_EOL;
+echo PHP_EOL;
+// now remove left space only or others from leftside so right side \n must work- > use ltrim 
+$name = "  My  ";
+$a = ltrim($name);
+echo "\n";
+echo $a;
+echo "Sabbir Ahmed";
+
+echo PHP_EOL;
+echo PHP_EOL;
+// now remove right space only or others from leftside so right side \n must work- > use ltrim 
+$name = "  My  \n";
+$a = ltrim($name);
+echo "\n";
+echo $a;
+echo "Sabbir Ahmed";
+
+/**  
+  * ===========================Word k icce moto vanga screen size er jar fole screen joto boroi hok eki dekha jabe=============================
+ *  wordwrap 
+ */
+$name = " WP Dark Mode todays download 313
+WP Markdown Editor (Formerly Dark Mode) todays download 221
+Webinar and Video Conference with Jitsi Meet todays download 11
+Zero BS Accounting todays download 0
+Sheets To WP Table Live Sync todays download \n";
+// echo $name;
+/**
+  WP Dark Mode todays download 313
+WP Markdown Editor (Formerly Dark Mode) todays download 221
+Webinar and Video Conference with Jitsi Meet todays download 11
+Zero BS Accounting todays download 0
+Sheets To WP Table Live Sync todays download
+ * 
+ */
+
+// echo wordwrap($name, 8);//kake ar koto char kore
+/**
+  WP Dark
+Mode    
+todays  
+download
+313     
+WP      
+Markdown
+Editor
+(Formerly
+Dark
+Mode)
+todays
+download
+221
+Webinar
+and
+Video
+Conference
+with
+Jitsi
+Meet
+todays
+download
+11
+Zero BS
+Accounting
+todays
+download
+0
+Sheets
+To WP
+Table
+Live
+Sync
+todays
+download
+ * 
+ */
+
+
+$name = " WP Dark Mode todays download 313
+WP Markdown Editorrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
+Webinar and Video Conference with Jitsi Meet todays download 11
+Zero BS Accounting todays download 0
+Sheets To WP Table Live Sync todays download \n";
+echo wordwrap($name, 8, "\n",true);
+
+/**
+ *  WP Dark
+Mode    
+todays  
+download
+313     
+WP      
+Markdown
+Editorrr
+rrrrrrrr
+rrrrrrrr
+rrrrrrrr
+rrrrrrrr
+rrrrrrrr
+rrrrrrrr
+rrrrrrr
+Webinar
+and
+Video
+Conferen
+ce with
+Jitsi
+Meet
+todays
+download
+11
+Zero BS
+Accounti
+ng
+todays
+download
+0
+Sheets
+To WP
+Table
+Live
+Sync
+todays
+download
+ * 
+ */
+
+ 
+/**  
+  * ===========================nl2br used to convert \n to <br> to show in web browser
+ */
+$name = " WP Dark Mode todays download 313 WP Dark Mode\n todays download \n313\n WP Dark Mode todays download 313";
+echo nl2br($name);  //nl2br used to convert \n to <br> to show in web browser
+// nl2br
