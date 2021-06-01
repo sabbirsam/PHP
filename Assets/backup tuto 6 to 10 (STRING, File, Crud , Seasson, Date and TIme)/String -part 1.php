@@ -521,3 +521,61 @@ download
 $name = " WP Dark Mode todays download 313 WP Dark Mode\n todays download \n313\n WP Dark Mode todays download 313";
 echo nl2br($name);  //nl2br used to convert \n to <br> to show in web browser
 // nl2br
+
+
+$name = "Md Sabbir Ahmed"; //3 ta word k alada korte 3 ta %s
+
+$a = sscanf($name,"%s %s %s");
+print_r($a);
+/**
+ * Array
+(
+    [0] => Md    
+    [1] => Sabbir
+    [2] => Ahmed 
+)
+ */
+
+
+$name = "Md Sabbir Ahmed 01307107409"; //3 ta word k alada korte 3 ta %s
+
+$a = sscanf($name,"%s %s %s %d");
+print_r($a);
+/**
+ * Array
+Array
+(
+    [0] => Md
+    [1] => Sabbir
+    [2] => Ahmed
+    [3] => 1307107409
+)
+ */
+
+$name = "Md Sabbir Ahmed 01307107409"; //3 ta word k alada korte 3 ta %s
+
+$a = sscanf($name,"%s %s %s %s");
+print_r($a);
+/**
+ * Array
+Array
+(
+    [0] => Md
+    [1] => Sabbir
+    [2] => Ahmed
+    [3] => 01307107409 // s mane sting so 0 soho
+)
+
+ */
+
+ /**  
+  * ===========================sscanf   6.11  , String, format = %s mane white space na asa obdi jabe, 
+ */
+$name = "Md Sabbir Ahmed 01307107409"; //3 ta word k alada korte 3 ta %s, then variable pass korrbw store korte
+
+$a = sscanf($name,"%s %s %s %d", $surname, $myname, $lastname, $phnnum);
+print_r( $surname); //Md
+print_r( $myname); //Sabbir
+print_r( $lastname); //Ahmed
+print_r( $phnnum); //01307107409
+
