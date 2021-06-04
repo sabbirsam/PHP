@@ -1,2 +1,2 @@
 <?php
-\n
+print_r($con);
