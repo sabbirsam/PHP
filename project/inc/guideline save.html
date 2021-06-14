@@ -1,0 +1,184 @@
+1.   first add the below code : 
+
+Start ------------------------------------------------
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+
+<!-- CSS Reset -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+
+<!-- Milligram CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+
+End------------------------------------------------
+
+2. create nav bar and set the below code
+
+Start ------------------------------------------------
+<p>
+    <a href="./index.php?task=report"> All Student |</a>
+    <a href="./index.php?task=add"> New Student |</a>
+    <a href="./index.php?task=seed"> Seed</a>
+    </p>
+End------------------------------------------------
+
+
+3. Add this nav bar to index.php
+
+Start ------------------------------------------------
+<?php include_once ('./inc/template/nav.php'); ?>
+
+End------------------------------------------------
+
+
+
+
+4. now add function.php and make it require once at index.php
+
+Start ------------------------------------------------
+<?php 
+
+    require_once('./inc/function.php');
+?>
+
+End------------------------------------------------
+
+
+
+5.  Save data-> predefined data store in serilized way
+
+Start------------------------------------------------
+
+<?php
+
+function seed($filename){
+    $data = array(
+        array(
+            'id'=> 1,
+            'fname'=> 'Sabbir', 
+            'lname'=> 'Ahmed', 
+            'roll'=>10
+        ),
+        array(
+            'id'=> 2,
+            'fname'=> 'Anik', 
+            'lname'=> 'Ahmed', 
+            'roll'=>12
+        ),
+        array(
+            'id'=> 3,
+            'fname'=> 'Samiya', 
+            'lname'=> 'Mahbub', 
+            'roll'=>13
+        ),
+        array(
+            'id'=> 4,
+            'fname'=> 'Sumiyya', 
+            'lname'=> 'Hasn', 
+            'roll'=>14
+        ),
+        array(
+            'id'=> 5,
+            'fname'=> 'Antik', 
+            'lname'=> 'Rahul', 
+            'roll'=>15
+        ),
+    );
+
+    $serilizedData = serialize($data); 
+
+    file_put_contents( $filename, $serilizedData, LOCK_EX);
+
+
+
+}
+
+End------------------------------------------------
+
+
+
+
+6.  now create file in function.php
+
+Start ------------------------------------------------
+// file save korbw kothy r seta koi ase ki name e 
+define('DB','/c/Users/SABBIR/Desktop/project/data/db.txt');  // use pwd to find current location then use the file store place to store
+End------------------------------------------------
+
+
+
+6.  now follow the below on index.php
+Start ------------------------------------------------
+
+$info = '';
+/*predefined data storing as a <a href="./index.php?task=seed"> Seed</a>   seed mode   so below code*/
+// start 
+$task = $_GET['task'] ?? 'report'; // task = task hole task r na hole report = <a href="./index.php?task=report"> All Student |</a>
+
+if('seed' == $task){
+    seed(DB_NAME);
+    $info = "Seeding is completed";
+}
+
+
+<?php
+            if($info != ''){
+                echo "<p>{$info}</p>";
+            }
+ ?>
+// End 
+
+End------------------------------------------------
+
+
+
+6. 
+
+Start ------------------------------------------------
+
+End------------------------------------------------
+
+
+
+
+6. 
+
+Start ------------------------------------------------
+
+End------------------------------------------------
+
+
+
+
+6. 
+
+Start ------------------------------------------------
+
+End------------------------------------------------
+
+
+
+
+6. 
+
+Start ------------------------------------------------
+
+End------------------------------------------------
+
+
+
+
+6. 
+
+Start ------------------------------------------------
+
+End------------------------------------------------
+
+
+
+
+6. 
+
+Start ------------------------------------------------
+
+End------------------------------------------------
