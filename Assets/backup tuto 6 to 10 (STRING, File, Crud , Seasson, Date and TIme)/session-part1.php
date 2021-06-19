@@ -93,3 +93,17 @@ echo $_SESSION['name'];
 session_name('sam');
 session_start();
 echo $_SESSION['name']; // It will work and  show the same name on another PHp file if we run
+
+
+
+// use subdomain and domain share file =============================================
+session_name("sam");
+session_start([
+    'cookie_domain'=>'.localhost:3030/session',
+    'cookie_path'=>'/'
+]);
+
+$_SESSION['data']= "sabbir main session.php";
+
+echo $_SESSION['data'];
+
