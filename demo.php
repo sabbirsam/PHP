@@ -1,9 +1,26 @@
 <?php
 include_once "function.php";
 
-setcookie("username","data", time()+40, ''); // here demo 1 is anothe php file or can be a folder, so cookie will be availabe on that path only
 
-echo $_COOKIE["username"];
+//  
 
+function sum($n){
+    $total = 0;
+    for($i = 0 ; $i <= $n ; $i++){
+        $total +=$i;
+        $i++;
+    }
+    return $total;
+}
 
+$start = microtime(true);
+echo (sum(4));
+echo PHP_EOL;
+$end = microtime(true);
 
+$total = ($end - $start);
+
+echo $total;
+
+// 6
+// 0.0006110668182373

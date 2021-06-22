@@ -1,2 +1,2 @@
 <?php
-read
+sum(10);
