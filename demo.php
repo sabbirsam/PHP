@@ -1,11 +1,45 @@
 <?php
 include_once "function.php";
 
-$d1 = new DateTime("15 june 2021");
-$d2 = new DateTime("22 june 2021");
+/**  
+  * Issue and fix
+   */
 
-$difference = date_diff($d1, $d2);
+ class Human{
+    public $name; 
+    public $age; 
 
-echo $difference->format("%d");//7
-echo $difference->format("%D");//07
-echo $difference->format("%m month %D Days");//0 month 07 Days
+    public function __construct($setName, $setAge=0){
+            $this->name = $setName;
+            $this->age = $setAge;
+    }
+    function work(){
+        echo "I am on office\n";
+        $this->setName();
+    }
+
+    function setName(){
+        if($this->age){
+            echo "My name is {$this->name}. I am {$this->age} years old"; 
+        }else{
+            echo "My name is {$this->name}"; 
+        }
+    }
+ }
+
+
+// Access or run 
+
+$h1 = new Human("sabbir",18);
+
+
+$h1->work();  
+
+
+/**
+I am on office
+My name is sabbir. I am 15 years old
+
+ */
+
+
