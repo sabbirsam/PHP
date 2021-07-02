@@ -477,3 +477,307 @@ $h1-> Widthdraw(100);
 $h1->Total(); //Total 200
 
 
+
+/**  
+  * Example of class object with Public and private 
+*/
+
+// $hex = #ff2356; // red green blue 
+
+class Hex {
+   
+    public $color1="00";
+    public $color2="00";
+    public $color3="00";
+    function __construct($set_c1,$set_c2,$set_c3){
+        $this->color1 = $set_c1;
+        $this->color2 = $set_c2;
+        $this->color3 = $set_c3;
+        $this->color();
+    }
+
+    private function color(){
+        $col = sprintf("#%02x%02x%02x",$this->color1,  $this->color2, $this->color3); 
+        echo $col;
+    }
+}
+
+$res = new Hex(13, 0, 255);
+
+
+// Another example 
+
+/**  
+  * Example of class object with Public and private 
+*/
+
+// $hex = #ff2356; // red green blue 
+
+class RGB {
+   
+    private $color;
+    private $red;
+    private $green;
+    private $blue;
+    function __construct($colorCode=''){
+        
+        // $this->color = $colorCode; or 
+        $this->color = ltrim($colorCode, '#' ); // color code e # k ignore korbw ty left side e trim kore nilam
+        $this->paseColor();
+        
+       
+       
+    }
+
+    // function getColor(){
+    //     return $this->color;
+    // }
+
+    // function setColor($colorCode){
+    //     $this->color = ltrim($colorCode, '#' );
+
+    //     // color set hole call korbw eikan theke 
+    //     $this->paseColor();
+    // }
+
+    private function paseColor(){
+        // echo "Hello";
+        $colors = sscanf($this->color,'%02x%02x%02x'); // used to set any kind of string, vag vag kore kaj kora jay = x is hexa decimal , 02 holo 2 gor k
+        print_r($colors);
+    }
+}
+
+$res = new RGB("#200237");
+
+
+
+// Or  with some minor change 
+
+
+/**  
+  * Example of class object with Public and private 
+*/
+
+// $hex = #ff2356; // red green blue 
+
+class RGB {
+   
+    private $color;
+    private $red;
+    private $green;
+    private $blue;
+    function __construct($colorCode=''){
+        
+        // $this->color = $colorCode; or 
+        $this->color = ltrim($colorCode, '#' ); // color code e # k ignore korbw ty left side e trim kore nilam
+        $this->paseColor();
+        
+       
+       
+    }
+
+    // function getColor(){
+    //     return $this->color;
+    // }
+
+    // function setColor($colorCode){
+    //     $this->color = ltrim($colorCode, '#' );
+
+    //     // color set hole call korbw eikan theke 
+    //     $this->paseColor();
+    // }
+
+    private function paseColor(){
+        // echo "Hello";
+        if($this->color){
+            // $colors = sscanf($this->color,'%02x%02x%02x'); // used to set any kind of string, vag vag kore kaj kora jay = x is hexa decimal , 02 holo 2 gor k
+            list($this->red, $this->green, $this->blue ) = sscanf($this->color,'%02x%02x%02x'); // used to set any kind of string, vag vag kore kaj kora jay = x is hexa decimal , 02 holo 2 gor k
+            echo $this->red;
+            echo $this->green;
+            echo $this->blue;
+        }
+    }
+}
+
+$res = new RGB("#ffef27");
+
+
+
+// Some another modification -------------------------------------
+
+
+/**  
+  * Example of class object with Public and private 
+*/
+
+
+class RGB {
+   
+    private $color;
+    private $red;
+    private $green;
+    private $blue;
+    function __construct($colorCode=''){
+        
+        // $this->color = $colorCode; or 
+        $this->color = ltrim($colorCode, '#' ); // color code e # k ignore korbw ty left side e trim kore nilam
+        $this->paseColor();
+    }
+
+
+    function readRGBColor(){
+        echo 
+        "Red = {$this->red}\nGreen = {$this->green}\nBlue = {$this->blue}";
+    }
+
+
+    private function paseColor(){
+        // echo "Hello";
+        if($this->color){
+            // $colors = sscanf($this->color,'%02x%02x%02x'); // used to set any kind of string, vag vag kore kaj kora jay = x is hexa decimal , 02 holo 2 gor k
+            list($this->red, $this->green, $this->blue ) = sscanf($this->color,'%02x%02x%02x'); // used to set any kind of string, vag vag kore kaj kora jay = x is hexa decimal , 02 holo 2 gor k
+            // echo $this->red;
+            // echo $this->green;
+            // echo $this->blue;
+
+            // $this->showRGBColor();
+        }else {
+            list($this->red, $this->green, $this->blue ) = array(0,0,0);
+        }
+    }  
+
+}
+
+$res = new RGB("#ffef27");
+
+$res->readRGBColor();
+/***
+ * Red = 255
+Green = 239
+Blue = 39
+ */
+
+
+class RGB {
+   
+    private $color;
+    private $red;
+    private $green;
+    private $blue;
+    function __construct($colorCode=''){
+        
+        // $this->color = $colorCode; or 
+        $this->color = ltrim($colorCode, '#' ); // color code e # k ignore korbw ty left side e trim kore nilam
+        $this->paseColor();
+    }
+
+
+
+    function getColor(){
+        return $this->color;
+    }
+
+
+    function getRGBColor(){
+        return array($this->red, $this->green, $this->blue);
+    }
+
+
+    function readRGBColor(){
+        echo 
+        "Red = {$this->red}\nGreen = {$this->green}\nBlue = {$this->blue}";
+    }
+
+
+
+    function setColor($colorCode){
+        $this->color = ltrim($colorCode, '#' );
+
+        // color set hole call korbw eikan theke 
+        $this->paseColor();
+    }
+
+    private function paseColor(){
+        // echo "Hello";
+        if($this->color){
+            // $colors = sscanf($this->color,'%02x%02x%02x'); // used to set any kind of string, vag vag kore kaj kora jay = x is hexa decimal , 02 holo 2 gor k
+            list($this->red, $this->green, $this->blue ) = sscanf($this->color,'%02x%02x%02x'); // used to set any kind of string, vag vag kore kaj kora jay = x is hexa decimal , 02 holo 2 gor k
+            // echo $this->red;
+            // echo $this->green;
+            // echo $this->blue;
+
+            // $this->showRGBColor();
+        }else {
+            list($this->red, $this->green, $this->blue ) = array(0,0,0);
+        }
+    }
+
+    function getRed(){
+        return $this->red;
+    }
+
+    function getGreen(){
+        return $this->green;
+    }
+
+    function getBlue(){
+        return $this->blue;
+    }
+
+
+  
+
+}
+
+$res = new RGB("#ff0000");
+
+$res->readRGBColor();
+echo $res->getRed();
+
+// END =================================================================================================XXXXXX================================
+
+
+// ===============================================================INHERITANCE===============================
+
+/**
+ * // 11.5 Inheritance 
+ */
+
+// 11.5 Inheritance 
+
+class Work{
+    protected $name="sa"; //only protected can be used on inheritance
+    public function programming(){
+        echo "Its time to programming\n";
+    }
+
+    public function Video(){
+        echo "Its time to watch Video\n";
+    }
+}
+
+class Sabbir extends Work{
+    public function php(){
+        echo "Its time to {$this->name}\n"; //use parent variable
+    }
+    
+}
+
+class Sam extends Work{
+    public function js(){
+        $this->name="hi";
+        echo "Its time to {$this->name}\n"; //override parents variable 
+    }
+}
+
+
+$call = new Work();
+// $call->programming();
+
+
+$sa = new Sabbir();
+$sa->php();
+
+$sam = new Sam();
+$sam->js();
+// ===============================================================INHERITANCE===============================

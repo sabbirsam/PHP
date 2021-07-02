@@ -2,62 +2,48 @@
 include_once "function.php";
 
 /**  
-  * Public  and private
+  * Example of class object with Public and private 
 */
 
-class Information{
-    // public $money; 
-    private $money; 
 
-     
+// 11.5 Inheritance 
 
-    public function __construct($setMoney=0){
-            $this->money = $setMoney;
+class Work{
+    protected $name="sa"; //only protected can be used on inheritance
+    public function programming(){
+        echo "Its time to programming\n";
     }
 
-
-
-
-    // public function AddMoney($add_money){
-    //     $this->money += $add_money;
-    //     echo PHP_EOL;
-
-    // }
-
-    private function AddMoney($add_money){
-        $this->money += $add_money;
-        echo PHP_EOL;
-
+    public function Video(){
+        echo "Its time to watch Video\n";
     }
+}
 
-
-
-    public function Widthdraw($w_money){
-        $this->money -= $w_money;
-        echo PHP_EOL;
-
+class Sabbir extends Work{
+    public function php(){
+        echo "Its time to {$this->name}\n"; //use parent variable
     }
-
-    public function Total(){
-        echo "Total {$this->money}"."\n";
-
+    public function programming(){
+        echo "Its time to Sabbir ----programming\n";
     }
- }
+    
+}
+
+class Sam extends Work{
+    public function js(){
+        $this->name="hi";
+        echo "Its time to {$this->name}\n"; //override parents variable 
+    }
+}
 
 
-// Access or run 
-
-$h1 = new Information(100);
-
-
-$h1->Total(); //Total 100
-
-// $h1->money= 200; // if it was public we can add from here. But if it was private then Uncaught Error: Cannot access private property Information::$money
-
-$h1->AddMoney(100); // same if it was  Uncaught Error: Call to private method Information::AddMoney() from context
-$h1->Total(); //Total 200
+$call = new Work();
+// $call->programming();
 
 
+$sa = new Sabbir();
+$sa->php();
+$sa->programming();
 
-$h1-> Widthdraw(100);
-$h1->Total(); //Total 200
+$sam = new Sam();
+$sam->js();

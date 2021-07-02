@@ -180,6 +180,9 @@ printf("Number %d of Hex value is %d", $n,$h);  //Number 12 of Hex value is 43
 $b = 13; //%x means hex print 
 printf("Number of hex value is %x",$b);  //Number of binary value is d
 
+
+$col = sprintf("#%02x%02x%02x",13, 0, 255); //color code
+echo $col;
 /**
  * Binary so just use %b
  */
