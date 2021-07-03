@@ -781,3 +781,166 @@ $sa->php();
 $sam = new Sam();
 $sam->js();
 // ===============================================================INHERITANCE===============================
+
+
+
+/**  
+  * Example of Inheritance : child class to parent class method call   parent::Name(); //this one is used to run parent function
+*/
+
+
+// 11.5 Inheritance : child class to parent class method call 
+
+
+class parentClass {
+    public function __construct()
+    {
+        $this->Name();
+    }
+
+    function Name(){
+        echo "Hello from parent\n";
+    }
+}
+
+class childClass extends parentClass{
+    
+    function Name(){
+        echo "Hello from Child\n";
+    }
+}
+
+$cc = new childClass();
+
+// output: Hello from Child
+
+// but how to run parent function Name; below :-
+
+class parentClass {
+    protected $name;
+    public function __construct($setName)
+    {
+        $this->name= $setName;
+        $this->Name();
+    }
+
+    function Name(){
+        echo "Hello from parent {$this->name}\n";
+    }
+}
+
+class childClass extends parentClass{
+    
+    function Name(){
+        parent::Name(); //this one is used to run parent function
+        echo "Hello from Child {$this->name}\n";
+    }
+}
+
+$cc = new childClass("sam");
+
+// out put: 
+// Hello from parent sam
+// Hello from Child sam
+
+
+class parentClass {
+    protected $name;
+    public function __construct($setName)
+    {
+        $this->name= $setName;
+        $this->Name();
+    }
+
+    function Name(){
+        echo "Hello from parent {$this->name}\n";
+    }
+}
+
+class childClass extends parentClass{
+    
+    function Name(){
+        parent::Name(); //this one is used to run parent function
+        echo "Hello from Child {$this->name}\n";
+    }
+}
+
+$pp = new parentClass("sabbir");
+// Hello from parent sabbir
+
+
+$cc = new childClass("sam");
+
+// out put: 
+// Hello from parent sam
+// Hello from Child sam
+
+
+
+
+/**  
+  * Example of Inheritance=========================================================================
+*/
+
+class Shape {
+
+    protected $name;
+    protected $area;
+    public function __construct($get_name)
+    { 
+      $this->name= $get_name;
+      $this->calculateArea();
+      
+    }
+  
+    public function getArea(){
+      echo "This {$this->name}'s area is {$this->area}\n";
+    }
+  
+    public function calculateArea(){}
+  
+  }
+  
+  class Triangle extends Shape {
+    private $a, $b, $c;
+    public function __construct($get_a, $get_b, $get_c){
+        $this->a=$get_a;
+        $this->b=$get_b;
+        $this->c=$get_c;
+  
+        parent::__construct("Triangle");
+        
+    }
+  
+    public function calculateArea(){
+      $perimeter = $this->a + $this->b + $this->c / 2 ; 
+  
+      $this->area = sqrt($perimeter * ($perimeter - $this->a) * ($perimeter - $this->b) * ($perimeter - $this->c));
+    }
+  
+  }
+  
+  class  square extends Shape{
+    private $a, $b;
+    public function __construct($get_a, $get_b){
+      $this->a=$get_a;
+      $this->b=$get_b;
+  
+      parent::__construct("square");
+  }
+  
+  public function calculateArea(){
+    $this->area = $this->a * $this->b;
+  }
+  
+  }
+  
+  
+  $t = new Triangle(1,2,3);
+  $t->getArea();
+  
+  $s = new square(1,2);
+  $s->getArea();
+  
+
+  
