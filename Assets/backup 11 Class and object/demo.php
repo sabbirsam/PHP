@@ -990,3 +990,142 @@ abstract class MyClass{
   
   // Its time for English class
   // Its time to take a break for breakfast
+
+
+
+/**  
+  * Final keyword is used to set it final so it can not be override==========================================
+  *It can be used in abstract and non abstract class
+*/
+
+  abstract class Name{
+  public function myName(){
+    echo "My Team name Spiro";
+  }
+}
+
+class sam extends Name{
+  public function myName()
+  {
+    echo "My team name is Sam";  // override the method 
+  }
+}
+
+
+$s = new Sam();
+$s->myName();
+
+//easily i can override it
+
+
+// Now make final  ==================================================
+
+abstract class Name{
+  final public function myName(){
+    echo "My Team name Spiro";
+  }
+}
+
+class sam extends Name{
+  public function myName()
+  {
+    echo "My team name is Sam";  // override the method 
+  }
+}
+
+
+$s = new Sam();
+$s->myName();
+
+//Cannot override final method Name::myName() in C:\Users\sabbir\Desktop\Php\demo.php on line 16 
+
+
+
+/**  
+  * take onnly inheritance type class 
+  * or work with only inheritance class
+*/
+
+class Shapes {
+    private $shapes;
+    function __construct()
+    {
+      $this->shapes = array();
+    }
+  
+    function addShape($shape){ //all are added here
+      array_push($this->shapes, $shape );
+    }
+  
+    function totalShape(){
+      return count($this->shapes);
+    }
+  }
+  
+  class Rectangale {
+  
+  }
+  
+  class triangale {
+  
+  }
+  
+  class Name{
+  
+  }
+  
+  $findshape = new Shapes();
+  $findshape->addShape(new Rectangale());
+  $findshape->addShape(new triangale());
+  $findshape->addShape(new Name());
+  
+  echo $findshape->totalShape();
+  
+  // output: 3 but Name is not shape 
+  
+  // solutioon  
+  
+  /**  
+    * take onnly inheritance type class 
+    * or work with only inheritance class
+  */
+  
+  class OnlyShape{
+  
+  }
+  class Shapes {
+    private $shapes;
+    function __construct()
+    {
+      $this->shapes = array();
+    }
+  
+    function addShape(OnlyShape $shape){  //means only OnlyShape will add here, jara OnlyShape k extends korbe tara sudu
+      array_push($this->shapes, $shape );
+    }
+  
+    function totalShape(){
+      return count($this->shapes);
+    }
+  }
+  
+  class Rectangale extends OnlyShape {
+  
+  }
+  
+  class triangale extends OnlyShape{
+  
+  }
+  
+  class Name{
+  
+  }
+  
+  $findshape = new Shapes();
+  $findshape->addShape(new Rectangale());
+  $findshape->addShape(new triangale());
+  // $findshape->addShape(new Name()); this will not work as it dont extend shape
+  
+  echo $findshape->totalShape();
+  
+  // output: 2 

@@ -1,48 +1,50 @@
 <?php
 include_once "function.php";
 
+
+// solutioon  
+
 /**  
-  * Example of Abstract
+  * take onnly inheritance type class 
+  * or work with only inheritance class
 */
 
-abstract class MyClass{
-  public function time(){
-    echo "Its time for Math class\n";
-    
-  }
+class OnlyShape{
 
-  abstract function brkfast();
 }
-
-
-class Sam{
-  public function time(){
-    echo "Its time for English class\n";
-  }
-}
-
-
-class Sabbir extends MyClass{
-  public function time(){
-    echo "Its time for English class\n";
-    $this->brkfast();
-
-  }
-
-  function brkfast()
+class Shapes {
+  private $shapes;
+  function __construct()
   {
-    echo "Its time to take a break for breakfast\n";
+    $this->shapes = array();
   }
-  //must impliment abstract method 
+
+  function addShape(OnlyShape $shape){  //means only OnlyShape will add here, jara OnlyShape k extends korbe tara sudu
+    array_push($this->shapes, $shape );
+  }
+
+  function totalShape(){
+    return count($this->shapes);
+  }
 }
 
-// $m = new MyClass();
-// $m->time();
-//give error . we can not call or instiantiate abstract class
+class Rectangale extends OnlyShape {
 
+}
 
-$s = new Sabbir();
-$s->time();
+class triangale extends OnlyShape{
 
-// Its time for English class
-// Its time to take a break for breakfast
+}
+
+class Name{
+
+}
+
+$findshape = new Shapes();
+$findshape->addShape(new Rectangale());
+$findshape->addShape(new triangale());
+// $findshape->addShape(new Name());
+
+echo $findshape->totalShape();
+
+// output: 3 but Name is not shape 
