@@ -1,6 +1,7 @@
 <?php
 
 
+
 include_once "function.php";
 
 
@@ -31,14 +32,17 @@ include_once "function.php";
     }
  }
 
- $sam = new Sabbir();
- Sabbir::Name("Hello");  //Output: My name is sam...Hello
- //Static function k instantiate or object diye call kora jabe na.   Oi class diye  call korte hbe  Sabbir::Name("Hello");
-Sabbir::Address();
+class Sam extends Sabbir{
+    // how to call static function after extedn 
+    // parent::Address();  //direct call kora jasse na. error dibe so static function er viore onno class er static function use kora jabe
+    static function UseToCallStaticn(){
+        echo"Hi from Sam\n";
+        parent::Address();
+    }
 
-$sam->Mobile(); 
-// My name is sam...Hello
-// My name is sam...HIIIII--
-// My name is sam...Good
-// My name is sam...HIIIII--
+}
 
+Sam::UseToCallStaticn();
+// output: 
+// Hi from Sam
+// My name is sam...HIIIII--
