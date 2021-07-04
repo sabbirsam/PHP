@@ -1129,3 +1129,136 @@ class Shapes {
   echo $findshape->totalShape();
   
   // output: 2 
+
+
+
+  
+/**  
+  * 11.12 Interface==========================================
+  * 
+*/
+
+
+//Interface  
+
+interface  Sam{
+  function demo();
+  function demo1();
+}
+
+interface  Sabbir extends Sam{  // interface another interface k extend kore but class interface k implements kore
+  function demo();
+
+}
+
+class Name implements Sam{
+  function demo(){
+      echo "Hi\n";
+  }
+  function demo1(){
+    echo "Hello\n";
+  }
+}
+
+
+
+$na = new Name();
+echo $na instanceof Sam;  // 1 mane Name Sam k implements korese ty 1
+$na -> demo();  //output: Hi
+
+// $sa = new Sabbir();  // error bcz interface cannot instantiate or can not make any object so give an error
+// echo $sa instanceof Sam;
+
+/**  
+  * 11.12 Interface-----------------------------------------------------------
+  * 
+*/
+
+interface BaseAnimal{
+  function isAlive();
+  function canEat($param1 , $param2);
+  function breed();
+}
+
+class Animal implements BaseAnimal{  // class e interface implement korte hy + all function same parameter wise declare korte hbe with body
+  function isAlive(){}
+  function canEat($param1 , $param2){}
+  function breed(){}
+
+  // those are same as BaseAnimal But have body{} 
+ 
+}
+
+interface BaseHuman extends BaseAnimal{  // one interface another interface k extends kore
+    // any function delcare korlam 
+    function canTalk();
+}
+
+class Human implements BaseHuman{  // here as Human implemensts only BaseHuman so canTalk need to declare here with body. But still it will generate an error. Bcz BaseHuman extends Animail
+                                    // so BaseHuman all property need to call here as well
+ 
+// need to call all function from Animal as BaseHuman extends Animal 
+  function isAlive(){}
+  function canEat($param1 , $param2){}
+  function breed(){}
+
+  function canTalk(){}
+
+}
+
+
+
+
+$h = new Human();
+echo $h instanceof Animal; // 0 no
+// // $h as Human did not impleemnts Animal in any way.
+
+echo $h instanceof BaseHuman;  // output: 1 as HUman implements BaseHuman
+echo $h instanceof BaseAnimal;  // output: 1 as HUman implements BaseHuman and this BaseHuman extends BaseAnimal so automatic Human implement the BaseAnimal: This is Polymorphism
+// one object which is $h is represent BaseHuman and also BaseAnimal so 
+
+$anima = new Animal(); //
+echo $anima instanceof BaseAnimal;// 1 yes as Animal implement BaseAnimal
+echo $anima instanceof Human;// 0 No as Animal doesnt extends  Human
+
+
+
+
+
+/**
+ * static ========================================= static to static call korte self:: use korbw , assign korte self:: use korbw.   $this-> hbe na.   ar call korte or instantiate korte Class::then oi obj k call korbw
+ */
+
+
+
+class Sabbir{
+  private $hi ;
+  static $hi2 ;
+  static function Name($n){
+      self::$hi2=$n;  // static e public or other variable $this-> diye assign kora jabe na. or call kora.  use korte hbe self::   
+     echo "My name is sam...{$n}\n";
+  }
+
+  static function Address(){
+     self::Name("HIIIII--"); // one static another static k call korte self:: use korbe
+  }
+
+  function Mobile(){
+     $this->Name("Good");  // normal class static k $this-> diye call korte parbe or self:: diyeo parbe
+
+     // or  
+     self::Address();
+
+ }
+}
+
+$sam = new Sabbir();
+Sabbir::Name("Hello");  //Output: My name is sam...Hello
+//Static function k instantiate or object diye call kora jabe na.   Oi class diye  call korte hbe  Sabbir::Name("Hello");
+Sabbir::Address();
+
+$sam->Mobile(); 
+// My name is sam...Hello
+// My name is sam...HIIIII--
+// My name is sam...Good
+// My name is sam...HIIIII--

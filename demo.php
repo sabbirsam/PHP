@@ -1,50 +1,44 @@
 <?php
+
+
 include_once "function.php";
 
 
-// solutioon  
+/**
+ * static ========================================= static to static call korte self:: use korbw , assign korte self:: use korbw.   $this-> hbe na.   ar call korte or instantiate korte Class::then oi obj k call korbw
+ */
 
-/**  
-  * take onnly inheritance type class 
-  * or work with only inheritance class
-*/
 
-class OnlyShape{
 
-}
-class Shapes {
-  private $shapes;
-  function __construct()
-  {
-    $this->shapes = array();
-  }
+ class Sabbir{
+     private $hi ;
+     static $hi2 ;
+     static function Name($n){
+         self::$hi2=$n;  // static e public or other variable $this-> diye assign kora jabe na. or call kora.  use korte hbe self::   
+        echo "My name is sam...{$n}\n";
+     }
 
-  function addShape(OnlyShape $shape){  //means only OnlyShape will add here, jara OnlyShape k extends korbe tara sudu
-    array_push($this->shapes, $shape );
-  }
+     static function Address(){
+        self::Name("HIIIII--"); // one static another static k call korte self:: use korbe
+     }
 
-  function totalShape(){
-    return count($this->shapes);
-  }
-}
+     function Mobile(){
+        $this->Name("Good");  // normal class static k $this-> diye call korte parbe or self:: diyeo parbe
 
-class Rectangale extends OnlyShape {
+        // or  
+        self::Address();
 
-}
+    }
+ }
 
-class triangale extends OnlyShape{
+ $sam = new Sabbir();
+ Sabbir::Name("Hello");  //Output: My name is sam...Hello
+ //Static function k instantiate or object diye call kora jabe na.   Oi class diye  call korte hbe  Sabbir::Name("Hello");
+Sabbir::Address();
 
-}
+$sam->Mobile(); 
+// My name is sam...Hello
+// My name is sam...HIIIII--
+// My name is sam...Good
+// My name is sam...HIIIII--
 
-class Name{
-
-}
-
-$findshape = new Shapes();
-$findshape->addShape(new Rectangale());
-$findshape->addShape(new triangale());
-// $findshape->addShape(new Name());
-
-echo $findshape->totalShape();
-
-// output: 3 but Name is not shape 
