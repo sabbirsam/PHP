@@ -1,48 +1,57 @@
 <?php
-
-
-
 include_once "function.php";
 
 
+//11.17
 /**
- * static ========================================= static to static call korte self:: use korbw , assign korte self:: use korbw.   $this-> hbe na.   ar call korte or instantiate korte Class::then oi obj k call korbw
+ * Magic Method , reduce of using getter and setter
  */
 
+class Student{
+    private $name;
+    private $roll;
+    private $class;
 
-
- class Sabbir{
-     private $hi ;
-     static $hi2 ;
-     static function Name($n){
-         self::$hi2=$n;  // static e public or other variable $this-> diye assign kora jabe na. or call kora.  use korte hbe self::   
-        echo "My name is sam...{$n}\n";
-     }
-
-     static function Address(){
-        self::Name("HIIIII--"); // one static another static k call korte self:: use korbe
-     }
-
-     function Mobile(){
-        $this->Name("Good");  // normal class static k $this-> diye call korte parbe or self:: diyeo parbe
-
-        // or  
-        self::Address();
-
+    public function __construct($setName='', $setRoll='', $setClass='')
+    {
+        $this->name = $setName;
+        $this->roll = $setRoll;
+        $this->class = $setClass;
     }
- }
 
-class Sam extends Sabbir{
-    // how to call static function after extedn 
-    // parent::Address();  //direct call kora jasse na. error dibe so static function er viore onno class er static function use kora jabe
-    static function UseToCallStaticn(){
-        echo"Hi from Sam\n";
-        parent::Address();
+    // get so return korbe
+    public function __get($prop)  //prop means property 
+    {
+        return $this->$prop;
     }
+
+    // set mane set korbe
+    public function __set($prop, $value)
+    {
+        $this->$prop = $value;
+    }
+    
 
 }
 
-Sam::UseToCallStaticn();
-// output: 
-// Hi from Sam
-// My name is sam...HIIIII--
+
+// $l = new Student("Sabbir",16,"Four");
+// echo $l->roll; //16  but its private, but still is accessiable
+
+
+$k = new Student();
+$k->name = "sabbir\n";
+
+echo $k->name; //sabbir 
+
+$k->roll = "16\n";
+
+echo $k->roll; //sabbir 
+
+$k->class = "six\n";
+
+echo $k->class; //sabbir 
+
+// sabbir
+// 16
+// six

@@ -1310,3 +1310,201 @@ Sam::UseToCallStaticn();
 // output: 
 // Hi from Sam
 // My name is sam...HIIIII--
+
+
+
+/**
+ * How to declare constant inside the class----------------------------------------------------------
+ */
+
+// constant k static er moto kore call korte hy 
+
+class MyClass{
+  const CITY = "Hello";
+}
+echo MYClass::CITY;
+
+
+/**
+ * or
+ */
+
+// instantiate korar pore sei object :: kore use kora jay
+
+class MyClass{
+  const CITY = "Hello";
+}
+echo MYClass::CITY;
+// or  
+$m = new MyClass();
+echo $m::CITY;
+
+
+/**
+ * How to declare constant inside the class
+ */
+
+// constant k static er moto kore call korte hy 
+
+class MyClass{
+  const CITY = "Hello";
+  function call(){
+      echo "hi from ".self::CITY;  //or 
+      echo "hi from ".$this::CITY;
+  }
+}
+echo MYClass::CITY;
+// or  
+$m = new MyClass();
+$m->call();
+echo $m::CITY;
+
+
+
+//11.17
+/**
+ * Magic Method , reduce of using getter and setter ===================================================
+ */
+
+class Student{
+  private $name;
+  private $roll;
+  private $class;
+
+  public function __construct($setName='', $setRoll='', $setClass='')
+  {
+      $this->name = $setName;
+      $this->roll = $setRoll;
+      $this->class = $setClass;
+  }
+// onk code likte hoilo 
+  function setName($setName){
+      $this->name = $setName;
+  }
+
+  function getName(){
+      return $this->name;
+  }
+
+
+
+  function setRoll($setRoll){
+      $this->roll = $setRoll;
+  }
+
+  function getRoll(){
+      return $this->roll;
+  }
+
+
+
+  function setClass($setClass){
+      $this->class = $setClass;
+  }
+
+  function getClass(){
+      return $this->class;
+  }
+// onk code likte hoilo 
+}
+
+$r = new Student();
+$r->setName("sam");
+echo $r->getName();
+
+//sam
+
+
+// or 
+$l = new Student("Sabbir",16,"Four");
+echo $l->getName(); //Sabbir
+
+
+// Normal way end
+//  Now by following the magic method  =========================================
+
+//11.17
+/**
+ * Magic Method , reduce of using getter 
+ */
+
+class Student{
+  private $name;
+  private $roll;
+  private $class;
+
+  public function __construct($setName='', $setRoll='', $setClass='')
+  {
+      $this->name = $setName;
+      $this->roll = $setRoll;
+      $this->class = $setClass;
+  }
+
+  public function __get($prop)  //prop means property 
+  {
+      return $this->$prop;
+  }
+
+}
+
+
+$l = new Student("Sabbir",16,"Four");
+echo $l->roll; //16  but its private, but still is accessiable
+
+
+// Now set   
+
+
+/**
+ * Magic Method ,setter  ((getter and setter))
+ */
+
+class Student{
+  private $name;
+  private $roll;
+  private $class;
+
+  public function __construct($setName='', $setRoll='', $setClass='')
+  {
+      $this->name = $setName;
+      $this->roll = $setRoll;
+      $this->class = $setClass;
+  }
+
+  // get so return korbe
+  public function __get($prop)  //prop means property 
+  {
+      return $this->$prop;
+  }
+
+  // set mane set korbe
+  public function __set($prop, $value)
+  {
+      $this->$prop = $value;
+  }
+  
+
+}
+
+
+// $l = new Student("Sabbir",16,"Four");
+// echo $l->roll; //16  but its private, but still is accessiable
+
+
+$k = new Student();
+$k->name = "sabbir\n";
+
+echo $k->name; //sabbir 
+
+$k->roll = "16\n";
+
+echo $k->roll; //sabbir 
+
+$k->class = "six\n";
+
+echo $k->class; //sabbir 
+
+// sabbir
+// 16
+// six
+
