@@ -4,10 +4,10 @@ include_once "function.php";
 
 //11.18
 /**
- * Iterator ->iteratorAggregate -> ArrayIterator
+ * Iterator Count object
  */
 
-class DistrictCollection implements IteratorAggregate{
+class DistrictCollection implements IteratorAggregate, Countable{  //fix
     private $districts;
 
     function __construct(){
@@ -18,13 +18,15 @@ class DistrictCollection implements IteratorAggregate{
         array_push($this->districts, $set_district);
     }
 
-    // function getDistrict(){
-    //     return $this->districts;  // no need this /** */
-    // }
 
     function getIterator()
     {
         return new ArrayIterator($this->districts);
+    }
+
+    function count()
+    {
+        return count($this->districts); //fix 
     }
 
 }
@@ -33,13 +35,14 @@ $addDis = new DistrictCollection;
 $addDis->Add("Dhaka");
 $addDis->Add("Mymensingh");
 $addDis->Add("Rangpur");
+$addDis->Add("Rangpur");
+$addDis->Add("Rangpur");
+$addDis->Add("Rangpur");
+$addDis->Add("Rangpur");
+$addDis->Add("Rangpur");
+$addDis->Add("Rangpur");
 
-foreach($addDis as $dis){
-    echo $dis."\n";
-}
+echo count($addDis); // fix 
 
-/**
-Dhaka
-Mymensingh
-Rangpur
- */
+
+
