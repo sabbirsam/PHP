@@ -2,56 +2,62 @@
 include_once "function.php";
 
 
-//11.17
+//11.18
 /**
- * Magic Method , reduce of using getter and setter
+ * Iterator ->iteratorAggregate -> ArrayIterator
  */
 
-class Student{
-    private $name;
-    private $roll;
-    private $class;
+class DistrictCollection{
+    private $districts;
 
-    public function __construct($setName='', $setRoll='', $setClass='')
-    {
-        $this->name = $setName;
-        $this->roll = $setRoll;
-        $this->class = $setClass;
+    function __construct(){
+        $this->districts = array();
     }
 
-    // get so return korbe
-    public function __get($prop)  //prop means property 
-    {
-        return $this->$prop;
+    function Add($set_district){
+        array_push($this->districts, $set_district);
     }
 
-    // set mane set korbe
-    public function __set($prop, $value)
-    {
-        $this->$prop = $value;
+    function getDistrict(){
+        return $this->districts;
     }
-    
 
 }
 
+$addDis = new DistrictCollection;
+$addDis->Add("Dhaka");
+$addDis->Add("Mymensingh");
+$addDis->Add("Rangpur");
 
-// $l = new Student("Sabbir",16,"Four");
-// echo $l->roll; //16  but its private, but still is accessiable
+// print_r($addDis->getDistrict()) ;
+/**
+ * 
+Array
+(
+    [0] => Dhaka
+    [1] => Mymensingh
+    [2] => Rangpur
+)
+
+ */
+
+//  $_tempData = $addDis->getDistrict();
+//  foreach($_tempData as $dis){
+//      echo $dis."\n";
+//  }
+ /**
+Dhaka
+Mymensingh
+Rangpur
+  */
+
+//  Now lets try with object (addDis) and find:  But the below one is not working 
 
 
-$k = new Student();
-$k->name = "sabbir\n";
+foreach($addDis as $dis){
+    echo $dis."\n";
+}
 
-echo $k->name; //sabbir 
-
-$k->roll = "16\n";
-
-echo $k->roll; //sabbir 
-
-$k->class = "six\n";
-
-echo $k->class; //sabbir 
-
-// sabbir
-// 16
-// six
+/**
+ * Nothing is print so to fix follow the below code. 
+ */
