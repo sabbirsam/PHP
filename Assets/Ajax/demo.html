@@ -166,9 +166,94 @@ function loadDoc() {
 
 <!-- ---------------------------------------------------------------------------------------Ajax Ajax for POST------------ -->
 
+<!-- demo1.php
 
-<!-- --------------------------------------------------------------------------------------------------- -->
+<?php
+echo "Array";
+$data= $_POST;
+$data['result']='success';
 
+echo json_encode($data, JSON_PRETTY_PRINT);
+
+
+-->
+<script>
+
+    function senData(){
+        let xhr = new XMLHttpRequest(); // kake request dibe sei PHP ety add hbe
+        xhr.open("POST","demo1.php",true);// method ki -> GET then kar kase patabw "demo1.php" ar seta assynchronous kina. -> true->>> POST , remove====> hi=hii&hello=hi
+
+        xhr.setRequestHeader(
+            "Content-Type",
+            "application/x-www-form-urlencoded"
+        );
+
+        // now 
+        xhr.onreadystatechange = function(){
+            if(this.readyState===4 && this.status===200){
+                console.log(this.responseText);
+                document.getElementById('result').innerHTML= this.responseText; //sho
+
+                var response = JSON.parse(this.responseText);
+                console.log(response.result);
+
+            }
+        }
+
+        xhr.send("hi=hii&hello=hi"); //remove====> hi=hii&hello=hi
+
+    }
+
+    document.getElementById('send').addEventListener('click', function(){
+        console.log("click and active sendData");
+        senData();
+    })
+
+</script>
+
+<!-- --------------------------------------------------------------------------------------------------- DELETE -->
+
+<!-- demo1.php 
+
+<?php
+echo "Array";  
+$data= $_GET;
+$data['result']='success';
+$data['method'] = $_SERVER['REQUEST_METHOD'];
+
+echo json_encode($data, JSON_PRETTY_PRINT);
+
+
+-->
+
+<script>
+
+    function senData(){
+        let xhr = new XMLHttpRequest(); // kake request dibe sei PHP ety add hbe
+        xhr.open("DELETE","demo1.php?id=12",true);// method ki -> GET then kar kase patabw "demo1.php" ar seta assynchronous kina. -> true->>> POST , remove====> hi=hii&hello=hi
+
+        // now 
+        xhr.onreadystatechange = function(){
+            if(this.readyState===4 && this.status===200){
+                console.log(this.responseText);
+                document.getElementById('result').innerHTML= this.responseText; //sho
+
+                var response = JSON.parse(this.responseText);
+                console.log(response.result);
+
+            }
+        }
+
+        xhr.send("hi=hii&hello=hi"); //remove====> hi=hii&hello=hi
+
+    }
+
+    document.getElementById('send').addEventListener('click', function(){
+        console.log("click and active sendData");
+        senData();
+    })
+
+</script>
 
 <!-- --------------------------------------------------------------------------------------------------- -->
 

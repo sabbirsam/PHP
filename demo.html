@@ -47,12 +47,12 @@
 
         function senData(){
             let xhr = new XMLHttpRequest(); // kake request dibe sei PHP ety add hbe
-            xhr.open("POST","demo1.php",true);// method ki -> GET then kar kase patabw "demo1.php" ar seta assynchronous kina. -> true->>> POST , remove====> hi=hii&hello=hi
+            xhr.open("DELETE","demo1.php?id=12",true);// method ki -> GET then kar kase patabw "demo1.php" ar seta assynchronous kina. -> true->>> POST , remove====> hi=hii&hello=hi
 
-            xhr.setRequestHeader(
-                "Content-Type",
-                "application/x-www-form-urlencoded"
-            );
+            // xhr.setRequestHeader(
+            //     "Content-Type",
+            //     "application/x-www-form-urlencoded"
+            // );
 
             // now 
             xhr.onreadystatechange = function(){
