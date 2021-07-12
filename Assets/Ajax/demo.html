@@ -183,7 +183,7 @@ echo json_encode($data, JSON_PRETTY_PRINT);
         let xhr = new XMLHttpRequest(); // kake request dibe sei PHP ety add hbe
         xhr.open("POST","demo1.php",true);// method ki -> GET then kar kase patabw "demo1.php" ar seta assynchronous kina. -> true->>> POST , remove====> hi=hii&hello=hi
 
-        xhr.setRequestHeader(
+        xhr.setRequestHeader(   // this one need only for POST
             "Content-Type",
             "application/x-www-form-urlencoded"
         );
@@ -255,21 +255,219 @@ echo json_encode($data, JSON_PRETTY_PRINT);
 
 </script>
 
-<!-- --------------------------------------------------------------------------------------------------- -->
+<!-- --------------------------------------------------------------------------------------------------- URL Encoded JSON DATA Passed by URL-->
+<!-- demo1.php 
+
+<?php
+echo "Array";  
+$data= $_GET;
+$data['result']='success';
+$data['method'] = $_SERVER['REQUEST_METHOD'];
+
+echo json_encode($data, JSON_PRETTY_PRINT);
+
+
+-->
+<script>
+
+    function senData(){
+        let xhr = new XMLHttpRequest(); // kake request dibe sei PHP ety add hbe
+        xhr.open("GET","demo1.php?",true);// method ki -> GET then kar kase patabw "demo1.php" ar seta assynchronous kina. -> true->>> POST , remove====> hi=hii&hello=hi
+
+        // xhr.setRequestHeader(
+        //     "Content-Type",
+        //     "application/x-www-form-urlencoded"
+        // );
+
+        // now 
+        xhr.onreadystatechange = function(){
+            if(this.readyState===4 && this.status===200){
+                console.log(this.responseText);
+                document.getElementById('result').innerHTML= this.responseText; //sho
+
+                var response = JSON.parse(this.responseText);
+                console.log(response.result);
+
+            }
+        }
+
+        xhr.send("hi=hii&hello=hi"); //remove====> hi=hii&hello=hi
+
+    }
+
+
+    // make URL Encoded  // url econded mane = "Name1=MD%20Sabbir%20Ahmed&Name2=MD&......" 
+    function formatParams(data){
+        return Object.keys(data).map(function(key){
+            return key + "=" + encodeURIComponent(data[key]) // url e convert korlam 
+        }).join('&');  // join korlam & diye 
+    }
+
+    document.getElementById('send').addEventListener('click', function(){
+        
+        // senData();
+
+        let params= {
+            "Name1" : "MD Sabbir Ahmed",
+            "Name2" : "MD",
+            "Name3" : "SAM",
+            "Name4" : "OK",
+        }
+        // url econded mane = "Name1=MD%20Sabbir%20Ahmed&Name2=MD&......"
+        console.log(formatParams(params)); // params pass korlam console de dekte j seta  url encoded obosty pacci kina
+
+        // output: Name1=MD%20Sabbir%20Ahmed&Name2=MD&Name3=SAM&Name4=OK 
+    })
+
+</script>
+
+
+<!-- ---------------------------------------------------------------------------------------------------Use GET METHOD and Pass JSON URL Encoded -->
+<!-- demo1.php 
+
+<?php
+echo "Array";  
+$data= $_GET;
+$data['result']='success';
+$data['method'] = $_SERVER['REQUEST_METHOD'];
+
+echo json_encode($data, JSON_PRETTY_PRINT);
+
+
+-->
+<script>
+
+    function senData(){
+
+        let params= {
+            "Name1" : "MD Sabbir Ahmed",
+            "Name2" : "MD",
+            "Name3" : "SAM",
+            "Name4" : "OK",
+        }
+        // url econded mane = "Name1=MD%20Sabbir%20Ahmed&Name2=MD&......"
+        console.log(formatParams(params)); // params pass korlam console de dekte j seta  url encoded obosty pacci kina
+
+        // output: Name1=MD%20Sabbir%20Ahmed&Name2=MD&Name3=SAM&Name4=OK 
+
+        let queryString = formatParams(params); // function k call korlam then params pass kore store korlam queryString e 
+
+
+        let xhr = new XMLHttpRequest(); // kake request dibe sei PHP ety add hbe
+        xhr.open("GET","demo1.php?"+queryString,true);// method ki -> GET then kar kase patabw "demo1.php" ar seta assynchronous kina. -> true->>> POST , remove====> hi=hii&hello=hi
+
+        // xhr.setRequestHeader(
+        //     "Content-Type",
+        //     "application/x-www-form-urlencoded"
+        // );
+
+        // now 
+        xhr.onreadystatechange = function(){
+            if(this.readyState===4 && this.status===200){
+                console.log(this.responseText);
+                document.getElementById('result').innerHTML= this.responseText; //sho
+
+                var response = JSON.parse(this.responseText);
+                console.log(response.result);
+
+            }
+        }
+
+        xhr.send("hi=hii&hello=hi"); //remove====> hi=hii&hello=hi
+
+    }
+
+
+    // make URL Encoded  // url econded mane = "Name1=MD%20Sabbir%20Ahmed&Name2=MD&......" 
+    function formatParams(data){
+        return Object.keys(data).map(function(key){
+            return key + "=" + encodeURIComponent(data[key]) // url e convert korlam 
+        }).join('&');  // join korlam & diye 
+    }
+
+    document.getElementById('send').addEventListener('click', function(){
+        
+        senData();
+
+        
+    })
+
+</script>
 
 
 
 
-<!-- --------------------------------------------------------------------------------------------------- -->
+<!-- ---------------------------------------------------------------------------------------------------Use POST METHOD and Pass JSON URL Encoded -->
+<!-- demo1.php 
+
+<?php
+echo "Array";  
+$data= $_REQUEST;
+$data['result']='success';
+$data['method'] = $_SERVER['REQUEST_METHOD'];
+
+echo json_encode($data, JSON_PRETTY_PRINT);
 
 
+-->
+<script>
+
+    function senData(){
+
+        let params= {
+            "Name1" : "MD Sabbir Ahmed",
+            "Name2" : "MD",
+            "Name3" : "SAM",
+            "Name4" : "OK",
+        }
+        // url econded mane = "Name1=MD%20Sabbir%20Ahmed&Name2=MD&......"
+        console.log(formatParams(params)); // params pass korlam console de dekte j seta  url encoded obosty pacci kina
+
+        // output: Name1=MD%20Sabbir%20Ahmed&Name2=MD&Name3=SAM&Name4=OK 
+
+        let queryString = formatParams(params); // function k call korlam then params pass kore store korlam queryString e 
 
 
+        let xhr = new XMLHttpRequest(); // kake request dibe sei PHP ety add hbe
+        xhr.open("POST","demo1.php",true);// method ki -> GET then kar kase patabw "demo1.php" ar seta assynchronous kina. -> true->>> POST , remove====> hi=hii&hello=hi
+
+        xhr.setRequestHeader(
+            "Content-Type",
+            "application/x-www-form-urlencoded"
+        );
+
+        // now 
+        xhr.onreadystatechange = function(){
+            if(this.readyState===4 && this.status===200){
+                console.log(this.responseText);
+                document.getElementById('result').innerHTML= this.responseText; //sho
+
+                var response = JSON.parse(this.responseText);
+                console.log(response.result);
+
+            }
+        }
+
+        xhr.send(queryString); //remove====> hi=hii&hello=hi
+
+    }
 
 
-<!-- --------------------------------------------------------------------------------------------------- -->
+    // make URL Encoded  // url econded mane = "Name1=MD%20Sabbir%20Ahmed&Name2=MD&......" 
+    function formatParams(data){
+        return Object.keys(data).map(function(key){
+            return key + "=" + encodeURIComponent(data[key]) // url e convert korlam 
+        }).join('&');  // join korlam & diye 
+    }
 
+    document.getElementById('send').addEventListener('click', function(){
+        
+        senData();
 
+        
+    })
+
+</script>
 
 
 
