@@ -1,4 +1,4 @@
-<!-- Ajax -->
+<!-- Ajax for GET-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,16 +47,16 @@
 
         function senData(){
             let xhr = new XMLHttpRequest(); // kake request dibe sei PHP ety add hbe
-            xhr.open("GET","demo1.php?foo=bar&hello=world",true);// method ki -> GET then kar kase patabw "demo1.php" ar seta assynchronous kina. -> true
+            xhr.open("GET","demo1.php?hi=hii&hello=hi",true);// method ki -> GET then kar kase patabw "demo1.php" ar seta assynchronous kina. -> true
 
             // now 
             xhr.onreadystatechange = function(){
                 if(this.readyState===4 && this.status===200){
                     console.log(this.responseText);
-                    document.getElementById('result').innerHTML= this.responseText; //show on output
+                    document.getElementById('result').innerHTML= this.responseText; //sho
 
                     var response = JSON.parse(this.responseText);
-                    console.log('response.res');
+                    console.log(response.result);
 
                 }
             }
@@ -76,7 +76,7 @@
 </html>
 
 
-<!-- fix  -->
+<!-- fix Ajax for GET -->
 <div class="container">
     <div class="row">
             <div class="col-md-4 data-trigger">
@@ -98,7 +98,7 @@
 
     function senData(){
         let xhr = new XMLHttpRequest(); // kake request dibe sei PHP ety add hbe
-        xhr.open("GET","sam.txt",true);// mainly it replacea all the value 
+        xhr.open("GET","demo1.php",true);// mainly it replacea all the value 
 
         // now 
         xhr.onreadystatechange = function(){
@@ -107,7 +107,7 @@
                 document.getElementById('result').innerHTML= this.responseText; //sho
 
                 var response = JSON.parse(this.responseText);
-                console.log('response.res');
+                console.log('response.result');
 
             }
         }
@@ -128,8 +128,17 @@
 
 <!-- Another ------------------------------------------------------------------------------------>
 
+<!-- demo1.php 
 
-<!-- Ajax -->
+
+<?php
+echo "Array";
+$data = $_POST;
+echo json_encode($data, JSON_PRETTY_PRINT);
+
+-->
+
+<!-- Ajax Ajax for GET-->
 <!DOCTYPE html>
 <html>
 <body>
@@ -154,5 +163,29 @@ function loadDoc() {
 
 </body>
 </html>
+
+<!-- ---------------------------------------------------------------------------------------Ajax Ajax for POST------------ -->
+
+
+<!-- --------------------------------------------------------------------------------------------------- -->
+
+
+<!-- --------------------------------------------------------------------------------------------------- -->
+
+
+
+
+<!-- --------------------------------------------------------------------------------------------------- -->
+
+
+
+
+
+
+<!-- --------------------------------------------------------------------------------------------------- -->
+
+
+
+
 
 <!-- --------------------------------------------------------------------------------------------------- -->

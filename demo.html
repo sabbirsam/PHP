@@ -1,4 +1,4 @@
-<!-- Ajax -->
+<!-- Ajax  for POST-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,7 +47,12 @@
 
         function senData(){
             let xhr = new XMLHttpRequest(); // kake request dibe sei PHP ety add hbe
-            xhr.open("GET","demo1.php?hi=hii",true);// method ki -> GET then kar kase patabw "demo1.php" ar seta assynchronous kina. -> true
+            xhr.open("POST","demo1.php",true);// method ki -> GET then kar kase patabw "demo1.php" ar seta assynchronous kina. -> true->>> POST , remove====> hi=hii&hello=hi
+
+            xhr.setRequestHeader(
+                "Content-Type",
+                "application/x-www-form-urlencoded"
+            );
 
             // now 
             xhr.onreadystatechange = function(){
@@ -56,12 +61,12 @@
                     document.getElementById('result').innerHTML= this.responseText; //sho
 
                     var response = JSON.parse(this.responseText);
-                    console.log('response.res');
+                    console.log(response.result);
 
                 }
             }
 
-            xhr.send();
+            xhr.send("hi=hii&hello=hi"); //remove====> hi=hii&hello=hi
 
         }
 
