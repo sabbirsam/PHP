@@ -13,92 +13,203 @@
 
     <!-- Milligram CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+
     <style>
-        .data-trigger{
-            padding: 50px 0px;
-        }
-        .data-value{
-            padding: 50px 10px;
-            background-color: rgb(242 242 242);
-            width: 60%;
-        }
+        html, body {
+      min-height: 100%;
+      }
+      body, div, form, input, select, p { 
+      padding: 0;
+      margin: 0;
+      outline: none;
+      font-family: Roboto, Arial, sans-serif;
+      font-size: 16px;
+      color: #eee;
+      }
+      body {
+      background: url("/uploads/media/default/0001/01/b5edc1bad4dc8c20291c8394527cb2c5b43ee13c.jpeg") no-repeat center;
+      background-size: cover;
+      }
+      h1, h2 {
+      text-transform: uppercase;
+      font-weight: 400;
+      }
+      h2 {
+      margin: 0 0 0 8px;
+      }
+      .main-block {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      padding: 25px;
+      background: rgba(0, 0, 0, 0.5); 
+      }
+      .left-part, form {
+      padding: 25px;
+      }
+      .left-part {
+      text-align: center;
+      }
+      .fa-graduation-cap {
+      font-size: 72px;
+      }
+      form {
+      background: rgba(0, 0, 0, 0.7); 
+      }
+      .title {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      }
+      .info {
+      display: flex;
+      flex-direction: column;
+      }
+      input, select {
+      padding: 5px;
+      margin-bottom: 30px;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid #eee;
+      }
+      input::placeholder {
+      color: #eee;
+      }
+      option:focus {
+      border: none;
+      }
+      option {
+      background: black; 
+      border: none;
+      }
+      .checkbox input {
+      margin: 0 10px 0 0;
+      vertical-align: middle;
+      }
+      .checkbox a {
+      color: #26a9e0;
+      }
+      .checkbox a:hover {
+      color: #85d6de;
+      }
+      .btn-item, button {
+      padding: 10px 5px;
+      margin-top: 20px;
+      border-radius: 5px; 
+      border: none;
+      background: #26a9e0; 
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 400;
+      color: #fff;
+      }
+      .btn-item {
+      display: inline-block;
+      margin: 20px 5px 0;
+      }
+      button {
+      width: 100%;
+      }
+      button:hover, .btn-item:hover {
+      background: #85d6de;
+      }
+      @media (min-width: 568px) {
+      html, body {
+      height: 100%;
+      }
+      .main-block {
+      flex-direction: row;
+      height: calc(100% - 50px);
+      }
+      .left-part, form {
+      flex: 1;
+      height: auto;
+      }
+      }
     </style>
 </head>
 <body>
       
     <div class="container">
         <div class="row">
-                <div class="col-md-4 data-trigger">
-                    <h4>Trigger</h4>
-                    <form action="">
-                        <input type="button" id="send" value="send data">
-
-                    </form>
+            <div class="main-block">
+                <div class="left-part">
+                  <i class="fas fa-graduation-cap"></i>
+                  <h1>Register to our courses</h1>
+                  
+                
                 </div>
-                <div class="col-md-8 data-value">
-                    <h4>Result</h4>
-                    <pre id="result"></pre>
-                </div>
+                <form action="/">
+                  <div class="title">
+                    <i class="fas fa-pencil-alt"></i> 
+                    <h2>Register here</h2>
+                  </div>
+                  <div class="info">
+                    <input class="fname" type="text" name="fname" placeholder="Full name" id="id-fname">
+                    <input type="text" name="email" placeholder="Email" id="id-email">
+                    <input type="text" name="phone" placeholder="Phone number" id="id-phone">
+                    <input type="password" name="password" placeholder="Password" id="id-password">
+                  </div>
+                  <div class="checkbox">
+                    <input type="checkbox" id="id-checkbox" name="checkbox"><span>I agree to the <a href="#">Privacy Poalicy for WPPOOL.</a></span>
+                  </div>
+                  <button id="send" type="submit" href="/">Submit</button>
+                </form>
+              </div>
 
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script> <!--MUST-->
 
     <script>
+        // ()->function($   {})(jQuery)  
 
-        function senData(){
-
-            let params= {
-                "Name1" : "MD Sabbir Ahmed",
-                "Name2" : "MD",
-                "Name3" : "SAM",
-                "Name4" : "OK",
-            }
-            // url econded mane = "Name1=MD%20Sabbir%20Ahmed&Name2=MD&......"
-            console.log(formatParams(params)); // params pass korlam console de dekte j seta  url encoded obosty pacci kina
-
-            // output: Name1=MD%20Sabbir%20Ahmed&Name2=MD&Name3=SAM&Name4=OK 
-
-            let queryString = formatParams(params); // function k call korlam then params pass kore store korlam queryString e 
+        // (function($){
+        //         $(document).ready(function(){
+        //                 alert("Hi");
+        //         });
+        // })(jQuery)
 
 
-            let xhr = new XMLHttpRequest(); // kake request dibe sei PHP ety add hbe
-            xhr.open("POST","demo1.php",true);// method ki -> GET then kar kase patabw "demo1.php" ar seta assynchronous kina. -> true->>> POST , remove====> hi=hii&hello=hi
 
-            xhr.setRequestHeader(
-                "Content-Type",
-                "application/x-www-form-urlencoded"
-            );
+        (function($){
+                $(document).ready(function(){
+                        
 
-            // now 
-            xhr.onreadystatechange = function(){
-                if(this.readyState===4 && this.status===200){
-                    console.log(this.responseText);
-                    document.getElementById('result').innerHTML= this.responseText; //sho
+                    $("#send").on("click",function(e){
+                         
 
-                    var response = JSON.parse(this.responseText);
-                    console.log(response.result);
+                         let params = {
+                             "id-fname":$("#id-fname").val(),   //or below can be used
+                             "id-email":document.getElementById("id-email").value,
 
-                }
-            }
+                             "id-phone":$("#id-phone").val(),
+                             "id-password":$("#id-password").val(),
+                             "id-checkbox":document.getElementById("id-checkbox").value,
 
-            xhr.send(queryString); //remove====> hi=hii&hello=hi
+                         };
 
-        }
+                         $.ajax({
+                        "method":"POST",
+                        "url":"demo1.php",
+                        "data": params
+                        }).done(function(msg){
+                            console.log(msg);
+                        });   
+
+                            return false;// used to disable send button without data
+                    });
+                    
+                });
 
 
-        // make URL Encoded  // url econded mane = "Name1=MD%20Sabbir%20Ahmed&Name2=MD&......" 
-        function formatParams(data){
-            return Object.keys(data).map(function(key){
-                return key + "=" + encodeURIComponent(data[key]) // url e convert korlam 
-            }).join('&');  // join korlam & diye 
-        }
+        })(jQuery);
 
-        document.getElementById('send').addEventListener('click', function(){
-            
-            senData();
-
-            
-        })
 
     </script>
     

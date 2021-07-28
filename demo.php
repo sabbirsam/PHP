@@ -4,46 +4,60 @@ include_once "function.php";
 
 //11.18
 /**
- * Iterator Count object
+ * Object  Cloning ===============================================
  */
 
-class DistrictCollection implements IteratorAggregate, Countable{  //fix
-    private $districts;
 
-    function __construct(){
-        $this->districts = array();
-    }
+ class A {
+     private $name;
+     function __construct($get_name)
+     {
+            $this->name= $get_name;
+     }
 
-    function Add($set_district){
-        array_push($this->districts, $set_district);
-    }
+     function setName($get_name)
+     {
+        $this->name= $get_name;
+     }
+ }
 
+//  $a = new A("Hello");
+//  $b = $a ;
 
-    function getIterator()
-    {
-        return new ArrayIterator($this->districts);
-    }
+//  $b->setName("I am new one");
 
-    function count()
-    {
-        return count($this->districts); //fix 
-    }
+//  print_r($a);
+//  print_r($b);
 
-}
+ /**
+  * A Object
+(
+    [name:A:private] => I am new one
+)
+A Object
+(
+    [name:A:private] => I am new one
+)
+  */
 
-$addDis = new DistrictCollection;
-$addDis->Add("Dhaka");
-$addDis->Add("Mymensingh");
-$addDis->Add("Rangpur");
-$addDis->Add("Rangpur");
-$addDis->Add("Rangpur");
-$addDis->Add("Rangpur");
-$addDis->Add("Rangpur");
-$addDis->Add("Rangpur");
-$addDis->Add("Rangpur");
+//  now use clone to see the diff 
 
-echo count($addDis); // fix 
+$a = new A("Hello");
+ $b = clone $a ;
 
+ $b->setName("I am new one");
 
+ print_r($a);
+ print_r($b);
 
-// Now 11.20 Object cloning 
+ /**
+  * A Object
+(
+    [name:A:private] => Hello
+)
+A Object
+(
+    [name:A:private] => I am new one
+)
+
+  */
