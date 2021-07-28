@@ -1,6 +1,6 @@
 
 <?php
-echo "Array";
+echo "Table";
 $data= $_REQUEST;
 $data['result']='success';
 $data['method'] = $_SERVER['REQUEST_METHOD'];

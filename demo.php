@@ -7,57 +7,25 @@ include_once "function.php";
  * Object  Cloning ===============================================
  */
 
+class Name{
+  public $name; 
+    public function __construct($set_name)
+    {
+      $this->name = $set_name;
+    }
 
- class A {
-     private $name;
-     function __construct($get_name)
-     {
-            $this->name= $get_name;
-     }
+    function Roll($set_name){
+      $this->name = $set_name;
+    }
+}
 
-     function setName($get_name)
-     {
-        $this->name= $get_name;
-     }
- }
+$n = new Name("Sabbir");
+$r = clone $n ;
 
-//  $a = new A("Hello");
-//  $b = $a ;
 
-//  $b->setName("I am new one");
+print_r($n);
+print_r($r);
 
-//  print_r($a);
-//  print_r($b);
+$r ->Roll("Sam");
 
- /**
-  * A Object
-(
-    [name:A:private] => I am new one
-)
-A Object
-(
-    [name:A:private] => I am new one
-)
-  */
-
-//  now use clone to see the diff 
-
-$a = new A("Hello");
- $b = clone $a ;
-
- $b->setName("I am new one");
-
- print_r($a);
- print_r($b);
-
- /**
-  * A Object
-(
-    [name:A:private] => Hello
-)
-A Object
-(
-    [name:A:private] => I am new one
-)
-
-  */
+print_r($r);
