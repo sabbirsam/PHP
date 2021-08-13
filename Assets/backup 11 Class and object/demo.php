@@ -1748,3 +1748,354 @@ A Object
 )
 
 */
+
+
+// Magic cloning ====================Issue next one is fix 
+
+
+//11.18
+/**
+ * Object  Cloning ===============================================
+ */
+
+class Address{
+  public $addre;
+  public function __construct($set_addre)
+  {
+    $this->addre = $set_addre;
+  }
+
+   function setAddress($set_addre){
+     $this->addre = $set_addre;
+   }
+}
+
+class Name{
+  public $name; 
+  public $addre; 
+    public function __construct($set_name, $set_addre)
+    {
+      $this->name = $set_name;
+      $this->addre = new Address($set_addre);
+    }
+
+    function updateAddress($set_addre){
+      $this -> addre -> setAddress($set_addre);
+    }
+}
+
+$n = new Name("Sabbir", "Dhaka");
+print_r($n);
+
+$new = clone $n;
+
+print_r( $n );
+print_r ($new );
+
+// $n -> updateAddress("Rangpur");
+$new -> updateAddress("Rangpur");
+
+print_r( $n );
+
+print_r ($new );
+
+/**
+ * 
+ * 
+ Name Object
+(
+    [name] => Sabbir
+    [addre] => Address Object
+        (
+            [addre] => Dhaka
+        )
+
+)
+Name Object
+(
+    [name] => Sabbir
+    [addre] => Address Object
+        (
+            [addre] => Dhaka
+        )
+
+)
+Name Object
+(
+    [name] => Sabbir
+    [addre] => Address Object
+        (
+            [addre] => Dhaka
+        )
+
+)
+Name Object
+(
+    [name] => Sabbir
+    [addre] => Address Object
+        (
+            [addre] => Rangpur //must be Dhaka but here its was rangpur
+        )
+
+)
+Name Object
+(
+    [name] => Sabbir
+    [addre] => Address Object
+        (
+            [addre] => Rangpur
+        )
+
+)
+ * 
+ * 
+ */
+
+//  Now fix  
+
+
+
+//11.18
+/**
+ * Object  Cloning ===============================================
+ */
+
+class Address{
+  public $addre;
+  public function __construct($set_addre)
+  {
+    $this->addre = $set_addre;
+  }
+
+   function setAddress($set_addre){
+     $this->addre = $set_addre;
+   }
+}
+
+class Name{
+  public $name; 
+  public $addre; 
+    public function __construct($set_name, $set_addre)
+    {
+      $this->name = $set_name;
+      $this->addre = new Address($set_addre);
+    }
+
+    function updateAddress($set_addre){
+      $this -> addre -> setAddress($set_addre);
+    }
+
+    public function __clone()
+    {
+      $this->addre= clone $this->addre;
+    }
+}
+
+$n = new Name("Sabbir", "Dhaka");
+print_r($n);
+
+$new = clone $n;
+
+print_r( $n );
+print_r ($new );
+
+// $n -> updateAddress("Rangpur");
+$new -> updateAddress("Rangpur");
+
+print_r( $n );
+
+print_r ($new );
+
+/**
+ * 
+ * 
+ Name Object
+(
+    [name] => Sabbir
+    [addre] => Address Object
+        (
+            [addre] => Dhaka
+        )
+
+)
+Name Object
+(
+    [name] => Sabbir
+    [addre] => Address Object
+        (
+            [addre] => Dhaka
+        )
+
+)
+Name Object
+(
+    [name] => Sabbir
+    [addre] => Address Object
+        (
+            [addre] => Dhaka
+        )
+
+)
+Name Object
+(
+    [name] => Sabbir
+    [addre] => Address Object
+        (
+            [addre] => Dhaka  // now it was chanhge 
+        )
+
+)
+Name Object
+(
+    [name] => Sabbir
+    [addre] => Address Object
+        (
+            [addre] => Rangpur
+        )
+
+)
+
+ */
+
+
+ //11.18
+/**
+ *  obejct Echo fix===============================================
+ */
+
+
+
+class Name {
+  public $name;
+
+  public function __construct($setName)
+  {
+    $this->name = $setName;
+  }
+
+}
+
+$na = new Name("Sa");
+echo serialize($na);// ok and print but direcr ok is not working
+
+//  echo $na; // Uncaught Error: Object of class Name could not be converted to string in  =>>> bcz its an object so it can not be call directly
+
+/**
+ * To fix use the below code ;
+ */
+
+
+
+class Name {
+  public $name;
+
+  public function __construct($setName)
+  {
+    $this->name = $setName;
+  }
+
+  function __toString()
+  {
+    return $this->name;
+  }
+
+}
+
+$na = new Name("Sa");
+
+
+echo $na;  // print Sa 
+
+
+
+
+//11.18
+/**
+ *  obejct Compare ===============================================
+ */
+
+
+
+class Name {
+  public $name;
+
+  public function __construct($setName)
+  {
+    $this->name = $setName;
+  }
+
+}
+
+$na = new Name("Sabbir Ahmed ");
+$na = new Name("Sabbir Ahmed ");
+
+if($na == $na ){
+  echo "match ";
+
+}else{
+  echo"not matched";
+}
+
+/**
+* match   -> na & na both are same object and same value so its match
+*/
+
+
+
+
+
+class Name {
+  public $name;
+
+  public function __construct($setName)
+  {
+    $this->name = $setName;
+  }
+
+}
+
+$na = new Name("Sabbir ");
+$na = new Name("Sabbir Ahmed ");
+
+if($na == $na ){
+  echo "match ";
+
+}else{
+  echo"not matched";
+}
+
+/**
+* match   -> na & na both are same object but value are not same bur still  its match which is wrong so use ===
+*/
+
+
+
+class Name {
+  public $name;
+
+  public function __construct($setName)
+  {
+    $this->name = $setName;
+  }
+
+}
+
+$na = new Name("Sabbir Ahmed");
+$a = new Name("Sabbir Ahmed");
+
+if($na === $a ){  //=== it also check the type
+  echo "match ";
+
+}else{
+  echo"not matched";
+}
+
+/**
+* not matched   -> na & a both are not same object but value are  same 
+*/
+
+
+/**
+ * Namespace ============================== video need to check again
+ * 
+ */
