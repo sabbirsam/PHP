@@ -3,8 +3,8 @@
 include_once "function.php";
 
 
-/**
- *   Exception  ===============================================
- */
+ /**
+  * Directory Iterator 14.5
+  */
 
 
