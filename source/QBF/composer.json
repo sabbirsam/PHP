@@ -1,0 +1,19 @@
+{
+    "name": "wppool/questionnaire-based-filter",
+    "description": "QBF Plugin is Questionnaire based filter plugin for WPPOOL",
+    "type": "project",
+    "license": "GPL",
+    "authors": [
+        {
+            "name": "sabbirsam",
+            "email": "samiubat14@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Inc\\": "./Inc"
+        }
+    }
+}

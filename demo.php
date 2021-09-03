@@ -4,7 +4,6 @@ include_once "function.php";
 
 
  /**
-  * Directory Iterator 14.5
-  */
-
+  * IOC - Inversation of control / Dependency injection Second example 
+ */
 

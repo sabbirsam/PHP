@@ -1,0 +1,8 @@
+#adminmenu .wp-menu-image img {
+    padding: 5px 0 0 0!important;
+    opacity: 1!important;
+}
+.wp-menu-image img {
+    width: 19px!important;
+    height: 21px!important;
+}
