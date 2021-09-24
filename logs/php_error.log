@@ -1,0 +1,2 @@
+[24-Sep-2021 16:15:10 Asia/Dhaka] PHP Notice:  Undefined variable: book in C:\wamp64\www\Php\demo.php on line 11
+[24-Sep-2021 16:15:10 Asia/Dhaka] PHP Warning:  Division by zero in C:\wamp64\www\Php\demo.php on line 12
